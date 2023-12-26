@@ -146,3 +146,4 @@ Get more power with AdminKit PRO, a premium variant of AdminKit, featuring hundr
 |                     | ✔ Toast Notifications                        |
 |                     | ✔ WYSIWYG Editors                            |
 |                     | ✔ Premium Support                            |
+"# Booking" 
