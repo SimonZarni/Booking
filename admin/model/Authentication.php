@@ -44,6 +44,17 @@ class Authentication {
         }
         return $result;
     }
+
+    public function adminByEmail($email){
+        $conn=Database::connect();
+        $sql='SELECT id from admin where email = :email';
+        $statement = $conn->prepare($sql);
+        $statement->bindParam(':email',$email);
+        if ($statement->execute()){
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+        }
+        return $result;
+    }
 }
 
 ?>

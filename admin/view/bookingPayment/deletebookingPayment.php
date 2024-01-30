@@ -9,7 +9,7 @@ if(isset($_GET['id'])){
     $result = $booking_payment_controller->deleteBookingPayment($id);
 
     if($result){
-        echo "<script>location.href='bookingPayment.php?'</script>";
+        echo "<script>location.href='bookingPayment.php'</script>";
     } 
     else {
         echo "Failed to delete booking payment.";

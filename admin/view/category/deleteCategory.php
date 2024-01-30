@@ -9,7 +9,7 @@ if(isset($_GET['id'])){
     $result = $category_controller->deleteCategory($id);
 
     if($result){
-        echo "<script>location.href='category.php?'</script>";
+        echo "<script>location.href='category.php'</script>";
     } 
     else {
         echo "Failed to delete category.";

@@ -1,37 +1,41 @@
 <?php
 
-include_once __DIR__. '/../../layouts/admin_navbar.php';
-include_once __DIR__. '/../../controller/AuthenticationController.php';
+session_start();
+// include_once __DIR__ . '/../../layouts/admin_navbar.php';
+include_once __DIR__ . '/../../controller/AuthenticationController.php';
 
 $auth_controller = new AuthenticationController();
 $admins = $auth_controller->getAdmins();
 
 if (isset($_POST['submit'])) {
-    foreach ($admins as $admin) {
-        if ($_POST['email'] == $admin['email'] && password_verify($_POST['password'], $admin['password'])) {
-			echo '<script>location.href="index.php?"</script>';
-            exit();
-        } else {
+	foreach ($admins as $admin) {
+		if ($_POST['email'] == $admin['email'] && password_verify($_POST['password'], $admin['password'])) {
+			$_SESSION['id'] = $admin['id'];
+			$_SESSION['name'] = $admin['name'];
+			echo '<script>location.href="index.php"</script>';
+			exit();
+		} else {
 			$passwordError = "Invalid email or password.";
 		}
-    }
-}
-
-if(isset($_SESSION['id'])){
-	echo '<script>location.href="index.php?"</script>';
+	}
 }
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5">
-	<meta name="author" content="AdminKit">
-	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
+	<link href="../../public/css/app.css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="shortcut icon" href="img/icons/icon-48x48.png"/>
+	<link rel="canonical" href="https://demo-basic.adminkit.io/"/>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<link href="https://cdn.datatables.net/v/dt/dt-1.13.5/b-2.4.1/datatables.min.css" rel="stylesheet" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 
 <body>
@@ -41,7 +45,7 @@ if(isset($_SESSION['id'])){
 				<div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 mx-auto d-table h-100">
 					<div class="d-table-cell align-middle">
 
-						<div class="text-center mt-4">
+						<div class="text-center">
 							<h1 class="h2">Welcome back!</h1>
 							<p class="lead">
 								Sign in to your account to continue
@@ -54,11 +58,11 @@ if(isset($_SESSION['id'])){
 									<form action="" method="post">
 										<div class="mb-3">
 											<label class="form-label">Email</label>
-											<input class="form-control form-control-lg" type="email" name="email" placeholder="Enter your email" value="<?php if(isset($_POST['email'])) echo $_POST['email']; ?>"/>
+											<input class="form-control form-control-lg" type="email" name="email" placeholder="Enter your email" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>" />
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Password</label>
-											<input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password" value="<?php if(isset($_POST['password'])) echo $_POST['password']; ?>"/>
+											<input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password" value="<?php if (isset($_POST['password'])) echo $_POST['password']; ?>" />
 										</div>
 										<div>
 											<div class="form-check align-items-center">
@@ -67,7 +71,7 @@ if(isset($_SESSION['id'])){
 											</div>
 										</div>
 										<?php
-										if(isset($passwordError)) echo '<span class="text-danger">'.$passwordError.'</span>'; 
+										if (!empty($passwordError)) echo '<span class="text-danger">' . $passwordError . '</span>';
 										?>
 										<div class="d-grid gap-2 mt-3">
 											<button class="btn btn-lg btn-primary" type="submit" name="submit">Sign in</button>
@@ -85,13 +89,16 @@ if(isset($_SESSION['id'])){
 		</div>
 	</main>
 
-<script src="../../public/js/app.js"></script>
-<script src="../../public/js/myscript.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src="https://cdn.datatables.net/v/dt/dt-1.13.5/b-2.4.1/datatables.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+	<script src="../../public/js/app.js"></script>
+	<script src="../../public/js/myscript.js"></script>
 
 </body>
 
 </html>
 
 <?php
-include_once __DIR__. '/../../layouts/admin_footer.php';
+include_once __DIR__ . '/../../layouts/admin_footer.php';
 ?>

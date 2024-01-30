@@ -9,13 +9,6 @@ include_once __DIR__ . '/../layouts/navbar.php';
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Entertain Pro</title>
-	<link href="../public/css/bootstrap.min.css" rel="stylesheet" >
-	<link href="../public/css/font-awesome.min.css" rel="stylesheet" >
-	<link href="../public/css/global.css" rel="stylesheet">
-	<link href="../public/css/event.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-	<script src="../public/js/bootstrap.bundle.min.js"></script>
-
 </head>
 <body>
 <section id="center" class="center_o pt-5">
@@ -475,3 +468,4 @@ function myFunction() {
 
 <?php
 include_once __DIR__. '/../layouts/footer.php';
+?>

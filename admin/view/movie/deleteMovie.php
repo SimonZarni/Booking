@@ -9,7 +9,7 @@ if(isset($_GET['id'])){
     $result = $movie_controller->deleteMovie($id);
 
     if($result){
-        echo "<script>location.href='movie.php?'</script>";
+        echo "<script>location.href='movie.php'</script>";
     } 
     else {
         echo "Failed to delete movie.";

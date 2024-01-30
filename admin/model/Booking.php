@@ -7,12 +7,10 @@ class Booking {
     public function getBookingInfo(){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT booking.*, movie.name as movie_name, show_time.show_time as show_time, theater.name as theater, user.name as user FROM booking
+        $sql = "SELECT booking.*, movie.name as movie_name, show_time.show_time as show_time, theater.name as theater FROM booking
                 JOIN movie ON booking.movie_id = movie.id 
                 JOIN show_time ON booking.show_time_id = show_time.id
-                JOIN theater ON booking.theater_id = theater.id
-                JOIN user ON booking.user_id = user.id";
-
+                JOIN theater ON booking.theater_id = theater.id";
         $statement = $conn->prepare($sql);
         if($statement->execute()){
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);

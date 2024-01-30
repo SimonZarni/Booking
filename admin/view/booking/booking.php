@@ -48,7 +48,6 @@ $bookings = $booking_controller->getBookings();
                 <th>Total Price</th>
                 <th>Customer Name</th>
                 <th>Customer Phone</th>
-                <th>User</th>
                 <th>Action</th>
             </thead>
             <tbody>
@@ -66,7 +65,6 @@ $bookings = $booking_controller->getBookings();
                     echo "<td>" . $booking['total_price'] . "</td>";
                     echo "<td>" . $booking['customer_name'] . "</td>";
                     echo "<td>" . $booking['customer_phone'] . "</td>";
-                    echo "<td>" . $booking['user'] . "</td>";
                     echo "<td>";
                     echo "<a class='btn btn-primary' href='editBooking.php?id=".$booking['id']."'>Edit</a>";
                     echo "<a class='btn btn-danger mx-2' href='deleteBooking.php?id=".$booking['id']."' onclick='return deleteBooking()'>Delete</a>";

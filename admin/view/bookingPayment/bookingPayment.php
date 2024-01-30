@@ -53,7 +53,6 @@ $booking_payments = $booking_payment_controller->getBookingPayments();
                 <th>Payment Type</th>
                 <th>Account No</th>
                 <th>Total Price</th>
-                <th>User</th>
                 <th>Status</th>
                 <th>Action</th>
             </thead>
@@ -69,7 +68,6 @@ $booking_payments = $booking_payment_controller->getBookingPayments();
                     echo "<td>" . $booking_payment['payment_type'] . "</td>";
                     echo "<td>" . $booking_payment['account_no'] . "</td>";
                     echo "<td>" . $booking_payment['total_price'] . "</td>";
-                    echo "<td>" . $booking_payment['user'] . "</td>";
                     echo "<td>" . $booking_payment['status'] . "</td>";
                     echo "<td>";
                     echo "<a class='btn btn-primary' href='editbookingPayment.php?id=".$booking_payment['id']."'>Edit</a>";
@@ -87,7 +85,6 @@ $booking_payments = $booking_payment_controller->getBookingPayments();
 
 <script src="../../public/js/app.js"></script>
 <script src="../../public/js/myscript.js"></script>
-
 
 </body>
 

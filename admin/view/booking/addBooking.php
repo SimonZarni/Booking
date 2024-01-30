@@ -131,22 +131,6 @@ if (isset($_POST['submit'])) {
                     <input type="text" name="customer_phone" value="<?php if(isset($_POST['customer_phone'])) echo $_POST['customer_phone']; ?>" class="form-control">
                 </div>
 
-                <div class="my-3">
-                    <label for="" class="form-label">User</label>
-                    <select name="user" id="" class="form-select">
-                        <option value="" selected disabled>Select user</option>
-                        <?php
-                        foreach ($users as $user) {
-                        ?>
-                            <option value="<?php echo $user['id']; ?>" <?php if((isset($_POST['user']) && $_POST['user']) == $user['id']) echo 'selected'; ?>>
-                                <?php echo $user['name']; ?>
-                            </option>
-                        <?php
-                        }
-                        ?>
-                    </select>
-                </div>
-
                 <div class="mt-3">
                     <button class="btn btn-success" type="submit" name="submit">Add</button>
                 </div>

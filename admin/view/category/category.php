@@ -61,9 +61,6 @@ $categories = $category_controller->getCategories();
     </div>
 </div>
 
-<script src="../../public/js/app.js"></script>
-<script src="../../public/js/myscript.js"></script>
-
 </body>
 
 </html>

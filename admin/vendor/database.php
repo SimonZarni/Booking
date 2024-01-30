@@ -2,7 +2,7 @@
 
 class Database {
     private static $hostName = 'localhost';
-    private static $dbName = 'cms';
+    private static $dbName = 'booking';
     private static $username = 'root';
     private static $password = '';
     private static $conn;

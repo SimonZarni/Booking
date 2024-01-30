@@ -9,7 +9,7 @@ if(isset($_GET['id'])){
     $result = $payment_controller->deletePayment($id);
 
     if($result){
-        echo "<script>location.href='payment.php?'</script>";
+        echo "<script>location.href='payment.php'</script>";
     } 
     else {
         echo "Failed to delete payment.";

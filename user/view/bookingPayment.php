@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
     $pay_status = $booking_payment_controller->createBookingPayment($booking,$customer_name,$showtime,$payment_type,$account_no,$total_price);
 
     if($pay_status){
-        echo '<script>location.href="movie.php?pay_status=' . $pay_status . '"</script>';
+        echo '<script>location.href="index.php?pay_status=' . $pay_status . '"</script>';
     }
 }
 
@@ -39,12 +39,6 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="../public/css/bootstrap.min.css" rel="stylesheet">
-	<link href="../public/css/font-awesome.min.css" rel="stylesheet">
-	<link href="../public/css/global.css" rel="stylesheet">
-	<link href="../public/css/index.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-	<script src="../public/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 <div class="content">
@@ -125,7 +119,6 @@ if (isset($_POST['submit'])) {
             </form>
     </div>
 </div>
-
 
 </body>
 

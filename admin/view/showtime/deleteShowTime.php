@@ -9,7 +9,7 @@ if(isset($_GET['id'])){
     $result = $showtime_controller->deleteShowTime($id);
 
     if($result){
-        echo "<script>location.href='showtime.php?'</script>";
+        echo "<script>location.href='showtime.php'</script>";
     } 
     else {
         echo "Failed to delete showtime.";

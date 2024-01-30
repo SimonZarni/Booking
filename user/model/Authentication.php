@@ -44,6 +44,17 @@ class Authentication {
         }
         return $result;
     }
+
+    public function userByEmail($email){
+        $conn=Database::connect();
+        $sql='SELECT id from user where email = :email';
+        $statement = $conn->prepare($sql);
+        $statement->bindParam(':email',$email);
+        if ($statement->execute()){
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+        }
+        return $result;
+    }
 }
 
 ?>

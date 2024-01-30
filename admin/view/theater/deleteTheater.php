@@ -9,7 +9,7 @@ if(isset($_GET['id'])){
     $result = $theater_controller->deleteTheater($id);
 
     if($result){
-        echo "<script>location.href='theater.php?'</script>";
+        echo "<script>location.href='theater.php'</script>";
     } 
     else {
         echo "Failed to delete theater.";

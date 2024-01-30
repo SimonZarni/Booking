@@ -35,9 +35,8 @@ if(isset($_POST['submit'])){
                     <label for="" class="form-label">Category</label>
                     <input type="text" name="name" class="form-control" value="<?php if(isset($category['name'])) echo $category['name']; ?>">
                 </div>
-
                 <div class="mt-3">
-                    <button class = "btn btn-success" name = "submit">Update</button>
+                    <button class="btn btn-success" name="submit">Update</button>
                 </div>
             </form>
     </div>

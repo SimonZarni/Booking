@@ -1,6 +1,8 @@
 <?php 
+
 include_once __DIR__. '/../../layouts/admin_navbar.php';
 include_once __DIR__. '/../../controller/AuthenticationController.php';
+
 ?>
 
 <!DOCTYPE html>
