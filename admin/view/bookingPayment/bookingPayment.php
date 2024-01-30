@@ -72,8 +72,15 @@ $booking_payments = $booking_payment_controller->getBookingPayments();
                     echo "<td>";
                     echo "<a class='btn btn-primary' href='editbookingPayment.php?id=".$booking_payment['id']."'>Edit</a>";
                     echo "<a class='btn btn-danger mx-2' href='deletebookingPayment.php?id=".$booking_payment['id']."' onclick='return deletebookingPayment()'>Delete</a>";
-                    echo "<a class='btn btn-primary' href='acceptPayment.php?id=".$booking_payment['id']."'>Accept</a>";
-                    echo "<a class='btn btn-danger mx-2' href='declinePayment.php?id=".$booking_payment['id']."'>Decline</a>";
+                    if ($booking_payment['status'] == null){
+                        echo "<a class='btn btn-success' href='acceptPayment.php?id=".$booking_payment['id']."'>Accept</a>";
+                        echo "<a class='btn btn-danger mx-2' href='declinePayment.php?id=".$booking_payment['id']."'>Decline</a>";
+                    } elseif ($booking_payment['status'] == "Accepted") {
+                        echo "<button class='btn btn-success'>Accepted</button>";
+                    }        
+                    else {
+                        echo "<button class='btn btn-danger'>Declined</button>";
+                    }        
                     echo "</td>";
                     echo "</tr>";
                 }
