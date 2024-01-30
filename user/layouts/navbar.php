@@ -4,8 +4,8 @@ session_start();
 include_once __DIR__ . '/../controller/AuthenticationController.php';
 include_once __DIR__ . '/../controller/CategoryController.php';
 
-$auth = new AuthenticationController();
-$auth->authentication();
+// $auth = new AuthenticationController();
+// $auth->authentication();
 
 $category_controller = new CategoryController();
 $categories = $category_controller->getCategories();
