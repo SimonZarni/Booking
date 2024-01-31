@@ -15,7 +15,7 @@ if (isset($_POST['otp_submit'])) {
             session_start();
             $_SESSION['id'] = $id;
             $_SESSION['name'] = $name;
-            echo '<script>location.href="index.php"</script>';
+            echo '<script>location.href="login.php"</script>';
             exit;
         }
     } else {
