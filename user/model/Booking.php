@@ -58,6 +58,21 @@ class Booking {
             return false;
         }
     }
+
+    public function makeBookingPayment($id){
+        try {
+            $conn = Database::connect();
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);          
+            $sql = "UPDATE booking SET payment_status = 'Paid' WHERE id = :id";          
+            $statement = $conn->prepare($sql);
+            $statement->bindParam(':id', $id);
+            return $statement->execute();
+        }   
+        catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+        return false;
+        }
+    }
 }
 
 ?>

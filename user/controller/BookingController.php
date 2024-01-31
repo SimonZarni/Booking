@@ -15,6 +15,10 @@ class BookingController extends Booking {
     public function deleteBooking($id){
         return $this->deleteBookingInfo($id);
     }
+
+    public function makePayment($id){
+        return $this->makeBookingPayment($id);
+    }
 } 
 
 ?>

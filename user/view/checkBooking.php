@@ -22,6 +22,9 @@ $bookings = $booking_controller->getBookings();
     if (isset($_GET['status']) && $_GET['status'] == true) {
         echo "<span class='text-success'>Movie booked successfully.</span>";
     }
+    if (isset($_GET['pay_status']) && $_GET['pay_status'] == true) {
+        echo "<span class='text-success'>Booking paid successfully.</span>";
+    }
     ?>
     <h3 class="mt-1"><strong>Booking history</strong></h3>
 
@@ -60,10 +63,16 @@ $bookings = $booking_controller->getBookings();
                         echo "<td>" . $booking['total_price'] . "</td>";
                         echo "<td>" . $booking['customer_name'] . "</td>";
                         echo "<td>" . $booking['customer_phone'] . "</td>";
-                        echo "<td>" . $booking['customer_name'] . "</td>";
+                        if ($booking['payment_status'] == 'Paid') {
+                            echo "<td class='text-success'>" . $booking['payment_status'] . "</td>";
+                        } else {
+                            echo "<td class='text-danger'>Unpaid</td>";
+                        }
                         echo "<td>";
                         echo "<a class='btn btn-danger mx-2' href='deleteBooking.php?id=" . $booking['id'] . "' onclick='return deleteBooking()'>Delete</a>";
-                        echo "<a class='btn btn-danger mx-2' href='bookingPayment.php?id=" . $booking['id'] . "'>Make Payment</a>";
+                        if ($booking['payment_status'] == null) {
+                            echo "<a class='btn btn-danger mx-2' href='bookingPayment.php?id=" . $booking['id'] . "'>Make Payment</a>";
+                        }
                         echo "</td>";
                         echo "</tr>";
                     }

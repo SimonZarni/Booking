@@ -27,7 +27,10 @@ if (isset($_POST['submit'])) {
     $pay_status = $booking_payment_controller->createBookingPayment($booking, $customer_name, $showtime, $payment_type, $account_no, $total_price);
 
     if ($pay_status) {
-        echo '<script>location.href="index.php?pay_status=' . $pay_status . '"</script>';
+        $id = $_GET['id'];
+        $pay_controller = new BookingController();
+        $paid = $pay_controller->makePayment($id);
+        echo '<script>location.href="checkBooking.php?pay_status=' . $pay_status . '"</script>';
     }
 }
 
