@@ -23,9 +23,6 @@ $movies = $movie_controller->getMovies();
     if (isset($_GET['status']) && $_GET['status'] == true) {
         echo "<span class='text-success'>Movie booked successfully.</span>";
     }
-    // if (isset($_GET['pay_status']) && $_GET['pay_status'] == true) {
-    //     echo "<span class='text-success'>Booking paid successfully.</span>";
-    // }
     ?>
 
     <div class="container-fluid">

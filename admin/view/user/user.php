@@ -38,7 +38,6 @@ $users = $user_controller->getUsers();
                 <th>No</th>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Action</th>
             </thead>
             <tbody>
                 <?php
@@ -49,7 +48,6 @@ $users = $user_controller->getUsers();
                     echo "<td>" . $user['name'] . "</td>";
                     echo "<td>" . $user['email'] . "</td>";
                     echo "<td>";
-                    echo "<a class='btn btn-danger mx-2' href='deleteCategory.php?id=".$user['id']."' onclick='return deleteCategory()'>Delete</a>";
                     echo "</td>";
                     echo "</tr>";
                 }

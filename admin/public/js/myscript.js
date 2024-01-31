@@ -26,6 +26,10 @@ function deletebookingPayment(){
     return confirm("Are you sure to delete this payment?");
 }
 
+function deleteUser(){
+    return confirm("Are you sure to delete this user?");
+}
+
 $(document).ready(function () {
     $('#catTable').DataTable({
         "paging": true,

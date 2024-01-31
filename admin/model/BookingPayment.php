@@ -119,6 +119,30 @@ class BookingPayment {
         return false;
         }
     }
+
+    public function emailByPayment($id){
+        try {
+            $conn = Database::connect();
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            $sql = "SELECT user.email 
+                    FROM user 
+                    JOIN booking_payment ON user.id = booking_payment.user_id 
+                    WHERE booking_payment.id = :id";
+    
+            $statement = $conn->prepare($sql);
+            $statement->bindParam(':id', $id);
+            $statement->execute();
+    
+            $email = $statement->fetchColumn();
+    
+            return $email !== false ? $email : null; 
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+            return null; 
+        }
+    }
+    
 }
 
 ?>

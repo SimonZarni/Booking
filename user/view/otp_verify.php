@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-// include_once __DIR__ . '/../layouts/navbar.php';
 include_once __DIR__ . '/../controller/AuthenticationController.php';
 
 if (isset($_POST['otp_submit'])) {
@@ -17,6 +16,7 @@ if (isset($_POST['otp_submit'])) {
             $_SESSION['id'] = $id;
             $_SESSION['name'] = $name;
             echo '<script>location.href="index.php"</script>';
+            exit;
         }
     } else {
         $otp_error = "Invalid OTP";
