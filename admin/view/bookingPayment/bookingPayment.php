@@ -68,18 +68,17 @@ $booking_payments = $booking_payment_controller->getBookingPayments();
                     echo "<td>" . $booking_payment['payment_type'] . "</td>";
                     echo "<td>" . $booking_payment['account_no'] . "</td>";
                     echo "<td>" . $booking_payment['total_price'] . "</td>";
-                    echo "<td>" . $booking_payment['status'] . "</td>";
+                    if ($booking_payment['status'] == 'Accepted') {
+                        echo "<td class='text-success'>" . $booking_payment['status'] . "</td>"; 
+                    } elseif ($booking_payment['status'] == 'Declined') {
+                        echo "<td class='text-danger'>" . $booking_payment['status'] . "</td>"; 
+                    } else {
+                        echo "<td>Pending</td>";
+                    }
                     echo "<td>";
-                    echo "<a class='btn btn-primary' href='editbookingPayment.php?id=".$booking_payment['id']."'>Edit</a>";
-                    echo "<a class='btn btn-danger mx-2' href='deletebookingPayment.php?id=".$booking_payment['id']."' onclick='return deletebookingPayment()'>Delete</a>";
                     if ($booking_payment['status'] == null){
                         echo "<a class='btn btn-success' href='acceptPayment.php?id=".$booking_payment['id']."'>Accept</a>";
                         echo "<a class='btn btn-danger mx-2' href='declinePayment.php?id=".$booking_payment['id']."'>Decline</a>";
-                    } elseif ($booking_payment['status'] == "Accepted") {
-                        echo "<button class='btn btn-success'>Accepted</button>";
-                    }        
-                    else {
-                        echo "<button class='btn btn-danger'>Declined</button>";
                     }        
                     echo "</td>";
                     echo "</tr>";

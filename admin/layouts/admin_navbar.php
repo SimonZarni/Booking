@@ -74,7 +74,7 @@ $auth->authentication();
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="../payment/payment.php">
-							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Payment Type</span>
+							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Payment Method</span>
 						</a>
 					</li>
 
@@ -86,7 +86,7 @@ $auth->authentication();
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="../bookingPayment/bookingPayment.php">
-							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Booking Payment</span>
+							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Payment</span>
 						</a>
 					</li>
 

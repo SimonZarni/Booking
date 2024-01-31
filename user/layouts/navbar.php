@@ -51,9 +51,14 @@ $categories = $category_controller->getCategories();
               <a class="nav-link active" aria-current="page" href="index.php">Home</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="checkBooking.php">Booking</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="payment.php">Payment</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="about.php">About </a>
             </li>
-
             <li class="nav-item">
               <a class="nav-link" href="contact.php">Contact</a>
             </li>

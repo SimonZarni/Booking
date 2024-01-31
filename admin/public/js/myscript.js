@@ -15,7 +15,7 @@ function deleteShowTime(){
 }
 
 function deletePayment(){
-    return confirm("Are you sure to delete this payment?");
+    return confirm("Are you sure to delete this payment method?");
 }
 
 function deleteBooking(){
@@ -23,7 +23,7 @@ function deleteBooking(){
 }
 
 function deletebookingPayment(){
-    return confirm("Are you sure to delete this booking payment?");
+    return confirm("Are you sure to delete this payment?");
 }
 
 $(document).ready(function () {

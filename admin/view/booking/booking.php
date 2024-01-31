@@ -32,7 +32,7 @@ $bookings = $booking_controller->getBookings();
     ?>
 
     <div class="col-md-4 mt-3">
-        <a class='btn btn-success p-2' href='addBooking.php?'>Add New Booking</a>
+        <a class='btn btn-success p-2' href='addBooking.php'>Add New Booking</a>
     </div>
 <div class="row mt-3">
     <div class="col-md-12">

@@ -4,6 +4,22 @@ include_once __DIR__. '/../vendor/database.php';
 
 class BookingPayment {
 
+    public function getBookingPaymentInfo(){
+        $conn = Database::connect();
+        $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT booking_payment.*, booking.id as booking_id, payment.payment_type as payment_type, 
+                show_time.show_time as show_time
+                FROM booking_payment 
+                JOIN booking ON booking_payment.booking_id = booking.id
+                JOIN payment ON booking_payment.payment_type_id = payment.id
+                JOIN show_time ON booking_payment.show_time_id = show_time.id";
+        $statement = $conn->prepare($sql);
+        if($statement->execute()){
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+        }
+        return $result;
+    }
+
     public function addBookingPayment($booking,$customer_name,$show_time,$payment_type,$account_no,$total_price){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);

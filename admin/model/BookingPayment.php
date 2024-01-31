@@ -101,9 +101,10 @@ class BookingPayment {
             $statement = $conn->prepare($sql);
             $statement->bindParam(':id', $id);
             return $statement->execute();
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-            return false;
+        }   
+        catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+        return false;
         }
     }
 
@@ -115,9 +116,10 @@ class BookingPayment {
             $statement = $conn->prepare($sql);
             $statement->bindParam(':id', $id);
             return $statement->execute();
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();
-            return false;
+        } 
+        catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+        return false;
         }
     }
 }

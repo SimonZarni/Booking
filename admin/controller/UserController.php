@@ -8,6 +8,10 @@ class UserController extends User {
         return $this->getUserInfo();
     }
 
+    public function userById($id){
+        return $this->getUserById($id);
+    }
+
     public function deleteUser($id){
         return $this->deleteUserInfo($id);
     }
