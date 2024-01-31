@@ -29,7 +29,8 @@ if (isset($_POST['submit'])) {
         $no_of_tickets = $_POST['no_of_tickets'];
         $total_price = $_POST['total_price'];
         $user = $_POST['user'];
-        $status = $booking_controller->createBooking($movie, $date, $showtime, $theater, $seat_no, $no_of_tickets, $total_price, $user);
+        $user_id = $_POST['user_id'];
+        $status = $booking_controller->createBooking($movie, $date, $showtime, $theater, $seat_no, $no_of_tickets, $total_price, $user, $user_id);
 
         if ($status) {
             echo '<script>location.href="checkBooking.php?status=' . $status . '"</script>';
@@ -132,15 +133,10 @@ if (isset($_POST['submit'])) {
                     <input type="text" name="total_price" value="<?php if (isset($_POST['total_price'])) echo $_POST['total_price']; ?>" class="form-control">
                 </div>
 
-                <!-- <div class="my-3">
-                    <label for="" class="form-label">Customer Name</label>
-                    <input type="text" name="customer_name" value="<?php if (isset($_POST['customer_name'])) echo $_POST['customer_name']; ?>" class="form-control">
-                </div> -->
-
-                <!-- <div class="my-3">
-                    <label for="" class="form-label">Customer Phone</label>
-                    <input type="text" name="customer_phone" value="<?php if (isset($_POST['customer_phone'])) echo $_POST['customer_phone']; ?>" class="form-control">
-                </div> -->
+                <div class="my-3">
+                    <label for="" class="form-label">User ID</label>
+                    <input type="text" name="user_id" value="<?php if(isset($_SESSION['id'])) echo $_SESSION['id']; ?>" class="form-control">
+                </div>
 
                 <div class="mt-3">
                     <button class="btn btn-success" type="submit" name="submit">Book</button>

@@ -4,12 +4,12 @@ include_once __DIR__. '/../model/Booking.php';
 
 class BookingController extends Booking {
 
-    public function getBookings(){
-        return $this->getBookingInfo();
+    public function getBookings($user_id){
+        return $this->getBookingInfo($user_id);
     }
 
-    public function createBooking($movie,$date,$show_time,$theater,$seat_no,$no_of_tickets,$total_price,$user){
-        return $this->addBooking($movie,$date,$show_time,$theater,$seat_no,$no_of_tickets,$total_price,$user);
+    public function createBooking($movie,$date,$show_time,$theater,$seat_no,$no_of_tickets,$total_price,$user,$user_id){
+        return $this->addBooking($movie,$date,$show_time,$theater,$seat_no,$no_of_tickets,$total_price,$user,$user_id);
     }
 
     public function deleteBooking($id){

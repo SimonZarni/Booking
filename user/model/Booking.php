@@ -4,25 +4,27 @@ include_once __DIR__. '/../vendor/database.php';
 
 class Booking {
 
-    public function getBookingInfo(){
+    public function getBookingInfo($user_id){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         $sql = "SELECT booking.*, movie.name as movie_name, show_time.show_time as show_time, theater.name as theater FROM booking 
                 JOIN movie ON booking.movie_id = movie.id 
                 JOIN show_time ON booking.show_time_id = show_time.id
-                JOIN theater ON booking.theater_id = theater.id";
+                JOIN theater ON booking.theater_id = theater.id
+                WHERE user_id = :user_id";
         $statement = $conn->prepare($sql);
+        $statement->bindParam(':user_id', $user_id);
         if($statement->execute()){
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         }
         return $result;
     }
 
-    public function addBooking($movie,$date,$show_time,$theater,$seat_no,$no_of_tickets,$total_price,$user){
+    public function addBooking($movie,$date,$show_time,$theater,$seat_no,$no_of_tickets,$total_price,$user,$user_id){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "INSERT INTO booking(movie_id,date,show_time_id,theater_id,seat_no,no_of_tickets,total_price,customer_name) 
-                VALUES(:movie,:date,:show_time,:theater,:seat_no,:no_of_tickets,:total_price,:customer_name)";
+        $sql = "INSERT INTO booking(movie_id,date,show_time_id,theater_id,seat_no,no_of_tickets,total_price,customer_name,user_id) 
+                VALUES(:movie,:date,:show_time,:theater,:seat_no,:no_of_tickets,:total_price,:customer_name,:user_id)";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':movie',$movie);
         $statement->bindParam(':date',$date);
@@ -32,6 +34,7 @@ class Booking {
         $statement->bindParam(':no_of_tickets',$no_of_tickets);
         $statement->bindParam(':total_price',$total_price);
         $statement->bindParam(':customer_name',$user);
+        $statement->bindParam(':user_id',$user_id);
         if($statement->execute())
         {
             return true;
