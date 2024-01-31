@@ -4,7 +4,12 @@ include_once __DIR__ . '/../layouts/navbar.php';
 include_once __DIR__ . '/../controller/BookingPaymentController.php';
 
 $booking_payment_controller = new BookingPaymentController();
-$booking_payments = $booking_payment_controller->getBookingPayments();
+if (isset($_SESSION['id'])) {
+    $user_id = $_SESSION['id'];
+    $booking_payments = $booking_payment_controller->getBookingPayments($user_id);
+} else {
+    $booking_payments = [];
+} 
 
 ?>
 
@@ -23,10 +28,7 @@ $booking_payments = $booking_payment_controller->getBookingPayments();
         <a class='btn btn-danger p-2' href='checkBooking.php'>Your bookings</a>
     </div>
 
-    <?php
-    if (!isset($_SESSION['id'])) {
-        echo "<h4 class='text-danger mt2'>You don't have any payment history since you are not logged in.</h4>";
-    } else {
+    <?php if (!empty($booking_payments)) {
     ?>
         <div class="row mt-3">
             <div class="col-md-12">
@@ -57,6 +59,10 @@ $booking_payments = $booking_payment_controller->getBookingPayments();
                 </table>
             </div>
         </div>
+    <?php
+    } else {
+    ?>
+        <h4 class='text-danger mt-2'>You don't have any payment history since you are not logged in.</h4>
     <?php
     }
     ?>

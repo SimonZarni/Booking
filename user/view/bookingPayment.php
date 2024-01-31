@@ -8,8 +8,9 @@ include_once  __DIR__ . '/../controller/PaymentController.php';
 
 $booking_payment_controller = new BookingPaymentController();
 
+$user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
 $booking_controller = new BookingController();
-$bookings = $booking_controller->getBookings();
+$bookings = $booking_controller->getBookings($user_id);
 
 $showtime_controller = new ShowTimeController();
 $showtimes = $showtime_controller->getShowTimes();
@@ -23,7 +24,8 @@ if (isset($_POST['submit'])) {
     $payment_type = $_POST['payment'];
     $account_no = $_POST['account_no'];
     $total_price = $_POST['total_price'];
-    $pay_status = $booking_payment_controller->createBookingPayment($booking, $customer_name, $payment_type, $account_no, $total_price);
+    $user_id = $_POST['user_id']; 
+    $pay_status = $booking_payment_controller->createBookingPayment($booking, $customer_name, $payment_type, $account_no, $total_price, $user_id);
 
     if ($pay_status) {
         $id = $_GET['id'];
@@ -99,6 +101,11 @@ if (isset($_POST['submit'])) {
                 <div class="my-3">
                     <label for="" class="form-label">Total Price</label>
                     <input type="text" name="total_price" value="<?php if (isset($_POST['total_price'])) echo $_POST['total_price']; ?>" class="form-control">
+                </div>
+
+                <div class="my-3"> 
+                    <label for="" class="form-label">User ID</label>
+                    <input type="text" name="user_id" value="<?php if(isset($_SESSION['id'])) echo $_SESSION['id']; ?>" class="form-control">
                 </div>
 
                 <div class="mt-3">

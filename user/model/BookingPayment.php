@@ -4,31 +4,34 @@ include_once __DIR__. '/../vendor/database.php';
 
 class BookingPayment {
 
-    public function getBookingPaymentInfo(){
+    public function getBookingPaymentInfo($user_id){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
         $sql = "SELECT booking_payment.*, booking.id as booking_id, payment.payment_type as payment_type
                 FROM booking_payment 
                 JOIN booking ON booking_payment.booking_id = booking.id
-                JOIN payment ON booking_payment.payment_type_id = payment.id";
+                JOIN payment ON booking_payment.payment_type_id = payment.id
+                WHERE booking.user_id = :user_id";
         $statement = $conn->prepare($sql);
+        $statement->bindParam(':user_id', $user_id);
         if($statement->execute()){
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
         }
         return $result;
     }
 
-    public function addBookingPayment($booking,$customer_name,$payment_type,$account_no,$total_price){
+    public function addBookingPayment($booking,$customer_name,$payment_type,$account_no,$total_price,$user_id){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "INSERT INTO booking_payment(booking_id,customer_name,payment_type_id,account_no,total_price) 
-                VALUES(:booking_id,:customer_name,:payment_type,:account_no,:total_price)";
+        $sql = "INSERT INTO booking_payment(booking_id,customer_name,payment_type_id,account_no,total_price,user_id) 
+                VALUES(:booking_id,:customer_name,:payment_type,:account_no,:total_price,:user_id)";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':booking_id',$booking);
         $statement->bindParam(':customer_name',$customer_name);
         $statement->bindParam(':payment_type',$payment_type);
         $statement->bindParam(':account_no',$account_no);
         $statement->bindParam(':total_price',$total_price);
+        $statement->bindParam(':user_id',$user_id);
         if($statement->execute())
         {
             return true;
