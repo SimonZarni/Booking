@@ -39,9 +39,9 @@ $booking_payments = $booking_payment_controller->getBookingPayments();
     }
     ?>
 
-    <div class="col-md-4 mt-3">
-        <a class='btn btn-success p-2' href='addbookingPayment.php?'>Add New Booking Payment</a>
-    </div>
+    <!-- <div class="col-md-4 mt-3">
+        <a class='btn btn-success p-2' href='addbookingPayment.php'>Add New Booking Payment</a>
+    </div> -->
 <div class="row mt-3">
     <div class="col-md-12">
         <table class="table table-striped" id="mytable">
@@ -49,7 +49,6 @@ $booking_payments = $booking_payment_controller->getBookingPayments();
                 <th>No</th>
                 <th>Booking ID</th>
                 <th>Customer Name</th>
-                <th>Show Time</th>
                 <th>Payment Type</th>
                 <th>Account No</th>
                 <th>Total Price</th>
@@ -64,7 +63,6 @@ $booking_payments = $booking_payment_controller->getBookingPayments();
                     echo "<td>" . $count++ . "</td>";
                     echo "<td>" . $booking_payment['booking_id'] . "</td>";
                     echo "<td>" . $booking_payment['customer_name'] . "</td>";
-                    echo "<td>" . $booking_payment['show_time'] . "</td>";
                     echo "<td>" . $booking_payment['payment_type'] . "</td>";
                     echo "<td>" . $booking_payment['account_no'] . "</td>";
                     echo "<td>" . $booking_payment['total_price'] . "</td>";

@@ -27,8 +27,8 @@ $booking_payments = $booking_payment_controller->getBookingPayments();
             <table class="table table-striped" id="mytable">
                 <thead>
                     <th>No</th>
+                    <th>Booking ID</th>
                     <th>Name</th>
-                    <th>Show Time</th>
                     <th>Payment Type</th>
                     <th>Account No</th>
                     <th>Total Price</th>
@@ -39,8 +39,8 @@ $booking_payments = $booking_payment_controller->getBookingPayments();
                     foreach ($booking_payments as $booking_payment) {
                         echo "<tr>";
                         echo "<td>" . $count++ . "</td>";
+                        echo "<td>" . $booking_payment['booking_id'] . "</td>";
                         echo "<td>" . $booking_payment['customer_name'] . "</td>";
-                        echo "<td>" . $booking_payment['show_time'] . "</td>";
                         echo "<td>" . $booking_payment['payment_type'] . "</td>";
                         echo "<td>" . $booking_payment['account_no'] . "</td>";
                         echo "<td>" . $booking_payment['total_price'] . "</td>";

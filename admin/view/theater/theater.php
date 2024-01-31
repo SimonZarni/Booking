@@ -32,7 +32,7 @@ $theaters = $theater_controller->getTheaters();
     ?>
 
     <div class="col-md-4 mt-3">
-        <a class='btn btn-success p-2' href='addTheater.php?'>Add New Theater</a>
+        <a class='btn btn-success p-2' href='addTheater.php'>Add New Theater</a>
     </div>
 <div class="row mt-3">
     <div class="col-md-12">

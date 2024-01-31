@@ -32,7 +32,7 @@ $movies = $movie_controller->getMovies();
     ?>
 
     <div class="col-md-4 mt-3">
-        <a class='btn btn-success p-2' href='addMovie.php?'>Add New Movie</a>
+        <a class='btn btn-success p-2' href='addMovie.php'>Add New Movie</a>
     </div>
 <div class="row mt-3">
     <div class="col-md-12">

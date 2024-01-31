@@ -20,11 +20,10 @@ $payments = $payment_controller->getPayments();
 if (isset($_POST['submit'])) {
     $booking = $_POST['booking'];
     $customer_name = $_POST['user'];
-    $showtime = $_POST['show_time'];
     $payment_type = $_POST['payment'];
     $account_no = $_POST['account_no'];
     $total_price = $_POST['total_price'];
-    $pay_status = $booking_payment_controller->createBookingPayment($booking, $customer_name, $showtime, $payment_type, $account_no, $total_price);
+    $pay_status = $booking_payment_controller->createBookingPayment($booking, $customer_name, $payment_type, $account_no, $total_price);
 
     if ($pay_status) {
         $id = $_GET['id'];
@@ -81,7 +80,7 @@ if (isset($_POST['submit'])) {
                     <input type="text" name="customer_name" value="<?php if (isset($_POST['customer_name'])) echo $_POST['customer_name']; ?>" class="form-control">
                 </div> -->
 
-                <div class="my-3">
+                <!-- <div class="my-3">
                     <label for="" class="form-label">Show Time</label>
                     <select name="show_time" id="" class="form-select">
                         <option value="" selected disabled>Select showtime</option>
@@ -95,7 +94,7 @@ if (isset($_POST['submit'])) {
                         }
                         ?>
                     </select>
-                </div>
+                </div> -->
 
                 <div class="my-3">
                     <label for="" class="form-label">Payment</label>

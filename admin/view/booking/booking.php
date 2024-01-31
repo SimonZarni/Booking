@@ -31,14 +31,15 @@ $bookings = $booking_controller->getBookings();
     }
     ?>
 
-    <div class="col-md-4 mt-3">
+    <!-- <div class="col-md-4 mt-3">
         <a class='btn btn-success p-2' href='addBooking.php'>Add New Booking</a>
-    </div>
+    </div> -->
 <div class="row mt-3">
     <div class="col-md-12">
         <table class="table table-striped" id="mytable">
             <thead>
                 <th>No</th>
+                <th>User</th>
                 <th>Movie</th>
                 <th>Date</th>
                 <th>Show Time</th>
@@ -46,8 +47,6 @@ $bookings = $booking_controller->getBookings();
                 <th>Seat No</th>
                 <th>No of Tickets</th>
                 <th>Total Price</th>
-                <th>Customer Name</th>
-                <th>Customer Phone</th>
                 <th>Action</th>
             </thead>
             <tbody>
@@ -56,6 +55,7 @@ $bookings = $booking_controller->getBookings();
                     foreach ($bookings as $booking) {
                     echo "<tr>";
                     echo "<td>" . $count++ . "</td>";
+                    echo "<td>" . $booking['customer_name'] . "</td>";
                     echo "<td>" . $booking['movie_name'] . "</td>";
                     echo "<td>" . $booking['date'] . "</td>";
                     echo "<td>" . $booking['show_time'] . "</td>";
@@ -63,10 +63,8 @@ $bookings = $booking_controller->getBookings();
                     echo "<td>" . $booking['seat_no'] . "</td>";
                     echo "<td>" . $booking['no_of_tickets'] . "</td>";
                     echo "<td>" . $booking['total_price'] . "</td>";
-                    echo "<td>" . $booking['customer_name'] . "</td>";
-                    echo "<td>" . $booking['customer_phone'] . "</td>";
                     echo "<td>";
-                    echo "<a class='btn btn-primary' href='editBooking.php?id=".$booking['id']."'>Edit</a>";
+                    // echo "<a class='btn btn-primary' href='editBooking.php?id=".$booking['id']."'>Edit</a>";
                     echo "<a class='btn btn-danger mx-2' href='deleteBooking.php?id=".$booking['id']."' onclick='return deleteBooking()'>Delete</a>";
                     echo "</td>";
                     echo "</tr>";

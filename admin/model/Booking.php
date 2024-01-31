@@ -18,11 +18,11 @@ class Booking {
         return $result;
     }
 
-    public function addBooking($movie,$date,$show_time,$theater,$seat_no,$no_of_tickets,$total_price,$customer_name,$customer_phone){
+    public function addBooking($movie,$date,$show_time,$theater,$seat_no,$no_of_tickets,$total_price,$user){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "INSERT INTO booking(movie_id,date,show_time_id,theater_id,seat_no,no_of_tickets,total_price,customer_name,customer_phone) 
-                VALUES(:movie,:date,:show_time,:theater,:seat_no,:no_of_tickets,:total_price,:customer_name,:customer_phone)";
+        $sql = "INSERT INTO booking(movie_id,date,show_time_id,theater_id,seat_no,no_of_tickets,total_price,customer_name) 
+                VALUES(:movie,:date,:show_time,:theater,:seat_no,:no_of_tickets,:total_price,:customer_name)";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':movie',$movie);
         $statement->bindParam(':date',$date);
@@ -31,8 +31,7 @@ class Booking {
         $statement->bindParam(':seat_no',$seat_no);
         $statement->bindParam(':no_of_tickets',$no_of_tickets);
         $statement->bindParam(':total_price',$total_price);
-        $statement->bindParam(':customer_name',$customer_name);
-        $statement->bindParam(':customer_phone',$customer_phone);
+        $statement->bindParam(':customer_name',$user);
         if($statement->execute())
         {
             return true;

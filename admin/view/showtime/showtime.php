@@ -32,7 +32,7 @@ $showtimes = $showtime_controller->getShowTimes();
     ?>
 
     <div class="col-md-4 mt-3">
-        <a class='btn btn-success p-2' href='addShowTime.php?'>Add New Show Time</a>
+        <a class='btn btn-success p-2' href='addShowTime.php'>Add New Show Time</a>
     </div>
 <div class="row mt-3">
     <div class="col-md-12">

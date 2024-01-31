@@ -9,7 +9,7 @@ if(isset($_GET['id'])){
     $result = $booking_controller->deleteBooking($id);
 
     if($result){
-        echo "<script>location.href='checkBooking.php?'</script>";
+        echo "<script>location.href='checkBooking.php'</script>";
     } 
     else {
         echo "Failed to delete booking.";

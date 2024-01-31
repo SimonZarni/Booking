@@ -32,7 +32,7 @@ $payments = $payment_controller->getPayments();
     ?>
 
     <div class="col-md-4 mt-3">
-        <a class='btn btn-success p-2' href='addPayment.php?'>Add New Payment</a>
+        <a class='btn btn-success p-2' href='addPayment.php'>Add New Payment</a>
     </div>
 <div class="row mt-3">
     <div class="col-md-12">

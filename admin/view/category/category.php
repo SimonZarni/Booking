@@ -32,7 +32,7 @@ $categories = $category_controller->getCategories();
     ?>
 
     <div class="col-md-4 mt-3">
-        <a class='btn btn-success p-2' href='addCategory.php?'>Add New Category</a>
+        <a class='btn btn-success p-2' href='addCategory.php'>Add New Category</a>
     </div>
 <div class="row mt-3">
     <div class="col-md-12">

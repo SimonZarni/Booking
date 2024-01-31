@@ -36,6 +36,7 @@ $bookings = $booking_controller->getBookings();
             <table class="table table-striped" id="mytable">
                 <thead>
                     <th>No</th>
+                    <th>User</th>
                     <th>Movie</th>
                     <th>Date</th>
                     <th>Show Time</th>
@@ -43,8 +44,6 @@ $bookings = $booking_controller->getBookings();
                     <th>Seat No</th>
                     <th>No of Tickets</th>
                     <th>Total Price</th>
-                    <th>Name</th>
-                    <th>Phone</th>
                     <th>Status</th>
                     <th>Action</th>
                 </thead>
@@ -54,6 +53,7 @@ $bookings = $booking_controller->getBookings();
                     foreach ($bookings as $booking) {
                         echo "<tr>";
                         echo "<td>" . $count++ . "</td>";
+                        echo "<td>" . $booking['customer_name'] . "</td>";
                         echo "<td>" . $booking['movie_name'] . "</td>";
                         echo "<td>" . $booking['date'] . "</td>";
                         echo "<td>" . $booking['show_time'] . "</td>";
@@ -61,8 +61,6 @@ $bookings = $booking_controller->getBookings();
                         echo "<td>" . $booking['seat_no'] . "</td>";
                         echo "<td>" . $booking['no_of_tickets'] . "</td>";
                         echo "<td>" . $booking['total_price'] . "</td>";
-                        echo "<td>" . $booking['customer_name'] . "</td>";
-                        echo "<td>" . $booking['customer_phone'] . "</td>";
                         if ($booking['payment_status'] == 'Paid') {
                             echo "<td class='text-success'>" . $booking['payment_status'] . "</td>";
                         } else {
