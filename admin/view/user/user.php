@@ -47,8 +47,6 @@ $users = $user_controller->getUsers();
                     echo "<td>" . $count++ . "</td>";
                     echo "<td>" . $user['name'] . "</td>";
                     echo "<td>" . $user['email'] . "</td>";
-                    echo "<td>";
-                    echo "</td>";
                     echo "</tr>";
                 }
                 ?>

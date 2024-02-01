@@ -62,7 +62,7 @@ if (isset($_SESSION['id'])) {
     <?php
     } else {
     ?>
-        <h4 class='text-danger mt-2'>You don't have any payment history since you are not logged in.</h4>
+        <h4 class='text-danger mt-2'>You don't have any payment history.</h4>
     <?php
     }
     ?>

@@ -7,6 +7,13 @@ include_once __DIR__ . '/../controller/CategoryController.php';
 $category_controller = new CategoryController();
 $categories = $category_controller->getCategories();
 
+if (isset($_SESSION['id'])) {
+  $user_controller = new AuthenticationController();
+  $user = $user_controller->getUserById($_SESSION['id']);
+} else {
+  $user = null;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -87,7 +94,7 @@ $categories = $category_controller->getCategories();
             </li>
 
             <?php
-            if (isset($_SESSION['name'])) {
+            if ($user && isset($user['id'])) {
             ?>
               <li class="nav-item ms-3 dropdown">
                 <button class="nav-link dropdown-toggle button" type="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">

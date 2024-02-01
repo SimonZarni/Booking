@@ -36,7 +36,7 @@ class BookingPaymentController extends BookingPayment {
         if ($accepted) {
             $email = $this->emailByPayment($id);
             if ($email) {
-                $message = "Your payment has been accepted. Thank you for payment and enjoy the movie.";
+                $message = "Your payment has been accepted. Thank you for your payment and enjoy the movie.";
                 return $this->sendMail($email, $message);
             } else {
                 return false; 

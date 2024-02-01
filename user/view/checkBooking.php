@@ -76,8 +76,8 @@ if (isset($_SESSION['id'])) {
                                 echo "<td class='text-danger'>Unpaid</td>";
                             }
                             echo "<td>";
-                            echo "<a class='btn btn-danger mx-2' href='deleteBooking.php?id=" . $booking['id'] . "' onclick='return deleteBooking()'>Delete</a>";
                             if ($booking['payment_status'] == null) {
+                                echo "<a class='btn btn-danger mx-2' href='deleteBooking.php?id=" . $booking['id'] . "' onclick='return deleteBooking()'>Delete</a>";
                                 echo "<a class='btn btn-danger mx-2' href='bookingPayment.php?id=" . $booking['id'] . "'>Make Payment</a>";
                             }
                             echo "</td>";
@@ -91,7 +91,7 @@ if (isset($_SESSION['id'])) {
     <?php
     } else {
     ?>
-        <h4 class='text-danger mt-2'>You don't have any booking history since you are not logged in.</h4>
+        <h4 class='text-danger mt-2'>You don't have any booking history.</h4>
     <?php
     }
     ?>

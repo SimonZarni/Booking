@@ -6,6 +6,13 @@ include_once __DIR__ . '/../controller/AuthenticationController.php';
 $auth = new AuthenticationController();
 $auth->authentication();
 
+if (isset($_SESSION['id'])) {
+	$admin_controller = new AuthenticationController();
+	$admin = $admin_controller->getAdminById($_SESSION['id']);
+} else {
+	$admin = null;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -21,8 +28,8 @@ $auth->authentication();
 	<title>Admin Dashboard - Cinemax</title>
 	<link href="../../public/css/app.css" rel="stylesheet">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="shortcut icon" href="img/icons/icon-48x48.png"/>
-	<link rel="canonical" href="https://demo-basic.adminkit.io/"/>
+	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 	<link href="https://cdn.datatables.net/v/dt/dt-1.13.5/b-2.4.1/datatables.min.css" rel="stylesheet" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -110,7 +117,7 @@ $auth->authentication();
 				<div class="navbar-collapse collapse">
 					<ul class="navbar-nav navbar-align">
 						<?php
-						if (isset($_SESSION['name'])) {
+						if ($admin && isset($admin['id'])) {
 						?>
 							<div class="dropdown">
 								<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -122,17 +129,8 @@ $auth->authentication();
 								</div>
 							</div>
 						<?php
-						} else {
-						?>
-							<div class="dropdown">
-								<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<span class="text-dark">Guest</span>
-								</a>
-								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item" href="../dashboard/login.php">Sign In</a>
-								</div>
-							</div>
-						<?php
+						} else { 
+							header('location: ../dashboard/login.php');
 						}
 						?>
 					</ul>
