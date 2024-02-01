@@ -118,6 +118,7 @@ if (isset($_SESSION['id'])) {
 					<ul class="navbar-nav navbar-align">
 						<?php
 						if ($admin && isset($admin['id'])) {
+						// if (isset($_SESSION['id'])) {
 						?>
 							<div class="dropdown">
 								<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

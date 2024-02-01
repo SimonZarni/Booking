@@ -5,8 +5,8 @@ include_once __DIR__ . '/../controller/BookingController.php';
 
 $booking_controller = new BookingController();
 
-if (isset($_SESSION['id'])) {
-    $user_id = $_SESSION['id'];
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
     $bookings = $booking_controller->getBookings($user_id);
 } else {
     $bookings = [];

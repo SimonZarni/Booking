@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-// include_once __DIR__ . '/../../layouts/admin_navbar.php';
 include_once __DIR__ . '/../../controller/AuthenticationController.php';
 
 $auth_controller = new AuthenticationController();

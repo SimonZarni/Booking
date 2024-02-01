@@ -8,7 +8,7 @@ include_once  __DIR__ . '/../controller/PaymentController.php';
 
 $booking_payment_controller = new BookingPaymentController();
 
-$user_id = isset($_SESSION['id']) ? $_SESSION['id'] : null;
+$user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 $booking_controller = new BookingController();
 $bookings = $booking_controller->getBookings($user_id);
 
@@ -24,7 +24,7 @@ if (isset($_POST['submit'])) {
     $payment_type = $_POST['payment'];
     $account_no = $_POST['account_no'];
     $total_price = $_POST['total_price'];
-    $user_id = $_POST['user_id']; 
+    $user_id = $_POST['userID']; 
     $pay_status = $booking_payment_controller->createBookingPayment($booking, $customer_name, $payment_type, $account_no, $total_price, $user_id);
 
     if ($pay_status) {
@@ -105,7 +105,7 @@ if (isset($_POST['submit'])) {
 
                 <div class="my-3"> 
                     <label for="" class="form-label">User ID</label>
-                    <input type="text" name="user_id" value="<?php if(isset($_SESSION['id'])) echo $_SESSION['id']; ?>" class="form-control">
+                    <input type="text" name="userID" value="<?php if(isset($_SESSION['user_id'])) echo $_SESSION['user_id']; ?>" class="form-control">
                 </div>
 
                 <div class="mt-3">

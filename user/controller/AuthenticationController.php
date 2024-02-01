@@ -11,12 +11,6 @@ include_once __DIR__.'/../vendor/PhpMailer/src/SMTP.php';
 
 class AuthenticationController extends Authentication {
 
-    public function authentication(){
-        if(!isset($_SESSION['id'])){
-			echo '<script>location.href="../view/login.php"</script>';
-        }
-    }
-
     public function getUsers(){
         return $this->getUserInfo();
     }

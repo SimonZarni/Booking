@@ -1,5 +1,6 @@
 <?php
 
+session_name('user_session');
 session_start();
 include_once __DIR__ . '/../controller/AuthenticationController.php';
 
@@ -13,8 +14,8 @@ if (isset($_POST['otp_submit'])) {
         if (!empty($status)) {
             $id = $auth_controller->getUserByEmail($status);
             session_start();
-            $_SESSION['id'] = $id;
-            $_SESSION['name'] = $name;
+            $_SESSION['user_id'] = $id;
+            $_SESSION['user_name'] = $name;
             echo '<script>location.href="login.php"</script>';
             exit;
         }

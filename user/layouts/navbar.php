@@ -1,5 +1,6 @@
 <?php
 
+session_name('user_session');
 session_start();
 include_once __DIR__ . '/../controller/AuthenticationController.php';
 include_once __DIR__ . '/../controller/CategoryController.php';
@@ -7,9 +8,9 @@ include_once __DIR__ . '/../controller/CategoryController.php';
 $category_controller = new CategoryController();
 $categories = $category_controller->getCategories();
 
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['user_id'])) {
   $user_controller = new AuthenticationController();
-  $user = $user_controller->getUserById($_SESSION['id']);
+  $user = $user_controller->getUserById($_SESSION['user_id']);
 } else {
   $user = null;
 }
@@ -95,10 +96,11 @@ if (isset($_SESSION['id'])) {
 
             <?php
             if ($user && isset($user['id'])) {
+            // if (isset($_SESSION['user_id'])) {
             ?>
               <li class="nav-item ms-3 dropdown">
                 <button class="nav-link dropdown-toggle button" type="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                  <?php echo $_SESSION['name']; ?>
+                  <?php echo $_SESSION['user_name']; ?>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="profile.php">Profile</a></li>

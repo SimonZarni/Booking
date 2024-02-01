@@ -1,5 +1,6 @@
 <?php
 
+session_name('user_session');
 session_start();
 include_once __DIR__ . '/../controller/AuthenticationController.php';
 
@@ -9,8 +10,8 @@ $users = $auth_controller->getUsers();
 if (isset($_POST['submit'])) {
 	foreach ($users as $user) {
 		if ($_POST['email'] == $user['email'] && password_verify($_POST['password'], $user['password'])) {
-			$_SESSION['id'] = $user['id'];
-			$_SESSION['name'] = $user['name'];
+			$_SESSION['user_id'] = $user['id'];
+			$_SESSION['user_name'] = $user['name'];
 			echo '<script>location.href="index.php"</script>';
 			exit();
 		} else {

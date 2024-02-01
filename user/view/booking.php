@@ -18,7 +18,7 @@ $theater_controller = new TheaterController();
 $theaters = $theater_controller->getTheaters();
 
 if (isset($_POST['submit'])) {
-    if (!isset($_SESSION['id'])) {
+    if (!isset($_SESSION['user_id'])) {
         $error = "You need to login to book a movie.";
     } else {
         $movie = $_POST['movie'];
@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
         $no_of_tickets = $_POST['no_of_tickets'];
         $total_price = $_POST['total_price'];
         $user = $_POST['user'];
-        $user_id = $_POST['user_id'];
+        $user_id = $_POST['userID'];
         $status = $booking_controller->createBooking($movie, $date, $showtime, $theater, $seat_no, $no_of_tickets, $total_price, $user, $user_id);
 
         if ($status) {
@@ -135,7 +135,7 @@ if (isset($_POST['submit'])) {
 
                 <div class="my-3">
                     <label for="" class="form-label">User ID</label>
-                    <input type="text" name="user_id" value="<?php if(isset($_SESSION['id'])) echo $_SESSION['id']; ?>" class="form-control">
+                    <input type="text" name="userID" value="<?php if(isset($_SESSION['user_id'])) echo $_SESSION['user_id']; ?>" class="form-control">
                 </div>
 
                 <div class="mt-3">

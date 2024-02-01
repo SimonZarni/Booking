@@ -1,5 +1,6 @@
 <?php
 
+session_name('user_session');
 session_start();
 include_once __DIR__ . '/../controller/AuthenticationController.php';
 
