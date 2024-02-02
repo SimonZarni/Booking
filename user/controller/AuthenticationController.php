@@ -53,6 +53,10 @@ class AuthenticationController extends Authentication {
             return $otp;
         }
     }
+
+    public function changePassword($password,$id){
+        return $this->updatePassword($password,$id);
+    }
 }
 
 ?>

@@ -47,13 +47,27 @@ class Authentication {
 
     public function adminByEmail($email){
         $conn=Database::connect();
-        $sql='SELECT id from admin where email = :email';
+        $sql='SELECT id FROM admin WHERE email = :email';
         $statement = $conn->prepare($sql);
         $statement->bindParam(':email',$email);
         if ($statement->execute()){
             $result = $statement->fetch(PDO::FETCH_ASSOC);
         }
         return $result;
+    }
+
+    public function updatePassword($password,$id){
+        $conn = Database::connect();
+        $sql = "UPDATE admin SET password = :password WHERE id = :id";
+        $statement = $conn->prepare($sql);
+        $statement->bindParam(':password',$password);
+        $statement->bindParam(':id',$id);
+        if($statement->execute())
+        {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 

@@ -96,14 +96,13 @@ if (isset($_SESSION['user_id'])) {
 
             <?php
             if ($user && isset($user['id'])) {
-            // if (isset($_SESSION['user_id'])) {
             ?>
               <li class="nav-item ms-3 dropdown">
                 <button class="nav-link dropdown-toggle button" type="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                   <?php echo $_SESSION['user_name']; ?>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="profile.php">Profile</a></li>
+                  <li><a class="dropdown-item" href="change_password.php">Change Password</a></li>
                   <li>
                     <hr class="dropdown-divider">
                   </li>

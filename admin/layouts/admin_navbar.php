@@ -118,14 +118,13 @@ if (isset($_SESSION['id'])) {
 					<ul class="navbar-nav navbar-align">
 						<?php
 						if ($admin && isset($admin['id'])) {
-						// if (isset($_SESSION['id'])) {
 						?>
 							<div class="dropdown">
 								<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 									<span class="text-dark"><?php echo $_SESSION['name']; ?></span>
 								</a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item" href="#">Profile</a>
+									<a class="dropdown-item" href="../features/change_password.php">Change Password</a>
 									<a class="dropdown-item" href="../dashboard/logout.php">Log Out</a>
 								</div>
 							</div>
