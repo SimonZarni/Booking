@@ -57,7 +57,7 @@ if (isset($_POST['submit'])) {
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="my-3">
                     <label for="" class="form-label">User</label>
-                    <input type="text" name="user" value="<?php if (isset($_SESSION['name'])) echo $_SESSION['name']; ?>" class="form-control">
+                    <input type="text" name="user" value="<?php if (isset($_SESSION['user_name'])) echo $_SESSION['user_name']; ?>" class="form-control">
                 </div>
 
                 <div class="my-3">
