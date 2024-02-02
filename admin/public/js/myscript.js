@@ -36,3 +36,52 @@ $(document).ready(function () {
         "searching": true, 
     });
 });
+
+$(document).ready(function () {
+    $('#bookTable').DataTable({
+        "paging": true,
+        "searching": true, 
+    });
+});
+
+$(document).ready(function () {
+    $('#payBookTable').DataTable({
+        "paging": true,
+        "searching": true, 
+    });
+});
+
+$(document).ready(function () {
+    $('#movieTable').DataTable({
+        "paging": true,
+        "searching": true, 
+    });
+});
+
+$(document).ready(function () {
+    $('#payTable').DataTable({
+        "paging": true,
+        "searching": true, 
+    });
+});
+
+$(document).ready(function () {
+    $('#showTable').DataTable({
+        "paging": true,
+        "searching": true, 
+    });
+});
+
+$(document).ready(function () {
+    $('#theaterTable').DataTable({
+        "paging": true,
+        "searching": true, 
+    });
+});
+
+$(document).ready(function () {
+    $('#userTable').DataTable({
+        "paging": true,
+        "searching": true, 
+    });
+});

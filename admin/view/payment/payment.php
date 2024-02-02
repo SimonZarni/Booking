@@ -36,7 +36,7 @@ $payments = $payment_controller->getPayments();
     </div>
 <div class="row mt-3">
     <div class="col-md-12">
-        <table class="table table-striped" id="mytable">
+        <table class="table table-striped" id="payTable">
             <thead>
                 <th>No</th>
                 <th>Show Time</th>
@@ -60,9 +60,6 @@ $payments = $payment_controller->getPayments();
         </table>
     </div>
 </div>
-
-<script src="../../public/js/app.js"></script>
-<script src="../../public/js/myscript.js"></script>
 
 </body>
 

@@ -36,7 +36,7 @@ $showtimes = $showtime_controller->getShowTimes();
     </div>
 <div class="row mt-3">
     <div class="col-md-12">
-        <table class="table table-striped" id="mytable">
+        <table class="table table-striped" id="showTable">
             <thead>
                 <th>No</th>
                 <th>Show Time</th>
@@ -60,9 +60,6 @@ $showtimes = $showtime_controller->getShowTimes();
         </table>
     </div>
 </div>
-
-<script src="../../public/js/app.js"></script>
-<script src="../../public/js/myscript.js"></script>
 
 </body>
 

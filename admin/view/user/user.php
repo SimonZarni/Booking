@@ -33,7 +33,7 @@ $users = $user_controller->getUsers();
     
 <div class="row mt-3">
     <div class="col-md-12">
-        <table class="table table-striped" id="mytable">
+        <table class="table table-striped" id="userTable">
             <thead>
                 <th>No</th>
                 <th>Name</th>
@@ -54,9 +54,6 @@ $users = $user_controller->getUsers();
         </table>
     </div>
 </div>
-
-<script src="../../public/js/app.js"></script>
-<script src="../../public/js/myscript.js"></script>
 
 </body>
 

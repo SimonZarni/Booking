@@ -36,7 +36,7 @@ $movies = $movie_controller->getMovies();
     </div>
 <div class="row mt-3">
     <div class="col-md-12">
-        <table class="table table-striped" id="mytable">
+        <table class="table table-striped" id="movieTable">
             <thead>
                 <th>No</th>
                 <th>Movie</th>
@@ -68,9 +68,6 @@ $movies = $movie_controller->getMovies();
         </table>
     </div>
 </div>
-
-<script src="../../public/js/app.js"></script>
-<script src="../../public/js/myscript.js"></script>
 
 </body>
 

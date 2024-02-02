@@ -39,12 +39,9 @@ $booking_payments = $booking_payment_controller->getBookingPayments();
     }
     ?>
 
-    <!-- <div class="col-md-4 mt-3">
-        <a class='btn btn-success p-2' href='addbookingPayment.php'>Add New Booking Payment</a>
-    </div> -->
 <div class="row mt-3">
     <div class="col-md-12">
-        <table class="table table-striped" id="mytable">
+        <table class="table table-striped" id="payBookTable">
             <thead>
                 <th>No</th>
                 <th>Booking ID</th>
@@ -86,9 +83,6 @@ $booking_payments = $booking_payment_controller->getBookingPayments();
         </table>
     </div>
 </div>
-
-<script src="../../public/js/app.js"></script>
-<script src="../../public/js/myscript.js"></script>
 
 </body>
 

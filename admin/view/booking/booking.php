@@ -31,12 +31,9 @@ $bookings = $booking_controller->getBookings();
     }
     ?>
 
-    <!-- <div class="col-md-4 mt-3">
-        <a class='btn btn-success p-2' href='addBooking.php'>Add New Booking</a>
-    </div> -->
 <div class="row mt-3">
     <div class="col-md-12">
-        <table class="table table-striped" id="mytable">
+        <table class="table table-striped" id="bookTable">
             <thead>
                 <th>No</th>
                 <th>User</th>
@@ -64,7 +61,6 @@ $bookings = $booking_controller->getBookings();
                     echo "<td>" . $booking['no_of_tickets'] . "</td>";
                     echo "<td>" . $booking['total_price'] . "</td>";
                     echo "<td>";
-                    // echo "<a class='btn btn-primary' href='editBooking.php?id=".$booking['id']."'>Edit</a>";
                     echo "<a class='btn btn-danger mx-2' href='deleteBooking.php?id=".$booking['id']."' onclick='return deleteBooking()'>Delete</a>";
                     echo "</td>";
                     echo "</tr>";
@@ -74,9 +70,6 @@ $bookings = $booking_controller->getBookings();
         </table>
     </div>
 </div>
-
-<script src="../../public/js/app.js"></script>
-<script src="../../public/js/myscript.js"></script>
 
 </body>
 

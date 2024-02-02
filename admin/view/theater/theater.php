@@ -36,7 +36,7 @@ $theaters = $theater_controller->getTheaters();
     </div>
 <div class="row mt-3">
     <div class="col-md-12">
-        <table class="table table-striped" id="mytable">
+        <table class="table table-striped" id="theaterTable">
             <thead>
                 <th>No</th>
                 <th>Category</th>
@@ -60,9 +60,6 @@ $theaters = $theater_controller->getTheaters();
         </table>
     </div>
 </div>
-
-<script src="../../public/js/app.js"></script>
-<script src="../../public/js/myscript.js"></script>
 
 </body>
 
