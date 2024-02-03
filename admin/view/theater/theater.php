@@ -39,7 +39,8 @@ $theaters = $theater_controller->getTheaters();
         <table class="table table-striped" id="theaterTable">
             <thead>
                 <th>No</th>
-                <th>Category</th>
+                <th>Theater</th>
+                <th>Movie</th>
                 <th>Action</th>
             </thead>
             <tbody>
@@ -49,6 +50,7 @@ $theaters = $theater_controller->getTheaters();
                     echo "<tr>";
                     echo "<td>" . $count++ . "</td>";
                     echo "<td>" . $theater['name'] . "</td>";
+                    echo "<td>" . $theater['movie'] . "</td>";
                     echo "<td>";
                     echo "<a class='btn btn-primary' href='editTheater.php?id=".$theater['id']."'>Edit</a>";
                     echo "<a class='btn btn-danger mx-2' href='deleteTheater.php?id=".$theater['id']."' onclick='return deleteTheater()'>Delete</a>";

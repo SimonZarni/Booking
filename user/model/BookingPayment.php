@@ -7,10 +7,10 @@ class BookingPayment {
     public function getBookingPaymentInfo($user_id){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT booking_payment.*, booking.id as booking_id, payment.payment_type as payment_type
-                FROM booking_payment 
-                JOIN booking ON booking_payment.booking_id = booking.id
-                JOIN payment ON booking_payment.payment_type_id = payment.id
+        $sql = "SELECT payment.*, booking.id as booking_id, payment_method.payment_type as payment_type
+                FROM payment 
+                JOIN booking ON payment.booking_id = booking.id
+                JOIN payment_method ON payment.payment_type_id = payment_method.id
                 WHERE booking.user_id = :user_id";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':user_id', $user_id);
@@ -23,7 +23,7 @@ class BookingPayment {
     public function addBookingPayment($booking,$customer_name,$payment_type,$account_no,$total_price,$user_id){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "INSERT INTO booking_payment(booking_id,customer_name,payment_type_id,account_no,total_price,user_id) 
+        $sql = "INSERT INTO payment(booking_id,customer_name,payment_type_id,account_no,total_price,user_id) 
                 VALUES(:booking_id,:customer_name,:payment_type,:account_no,:total_price,:user_id)";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':booking_id',$booking);
@@ -44,7 +44,7 @@ class BookingPayment {
     public function getBookingPaymentList($id){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM booking_payment WHERE id=:id";
+        $sql = "SELECT * FROM payment WHERE id=:id";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':id',$id);
         if($statement->execute()){

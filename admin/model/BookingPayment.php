@@ -7,10 +7,10 @@ class BookingPayment {
     public function getBookingPaymentInfo(){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT booking_payment.*, booking.id as booking_id, payment.payment_type as payment_type
-                FROM booking_payment 
-                JOIN booking ON booking_payment.booking_id = booking.id
-                JOIN payment ON booking_payment.payment_type_id = payment.id";
+        $sql = "SELECT payment.*, booking.id as booking_id, payment_method.payment_type as payment_type
+                FROM payment 
+                JOIN booking ON payment.booking_id = booking.id
+                JOIN payment_method ON payment.payment_type_id = payment_method.id";
         $statement = $conn->prepare($sql);
         if($statement->execute()){
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -21,7 +21,7 @@ class BookingPayment {
     public function addBookingPayment($booking,$customer_name,$payment_type,$account_no,$total_price){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "INSERT INTO booking_payment(booking_id,customer_name,payment_type_id,account_no,total_price) 
+        $sql = "INSERT INTO payment(booking_id,customer_name,payment_type_id,account_no,total_price) 
                 VALUES(:booking_id,:customer_name,:payment_type,:account_no,:total_price)";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':booking_id',$booking);
@@ -41,7 +41,7 @@ class BookingPayment {
     public function getBookingPaymentList($id){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM booking_payment WHERE id=:id";
+        $sql = "SELECT * FROM payment WHERE id=:id";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':id',$id);
         if($statement->execute()){
@@ -53,7 +53,7 @@ class BookingPayment {
     public function updateBookingPaymentInfo($id,$booking,$customer_name,$show_time,$payment_type,$account_no,$total_price){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "UPDATE booking_payment 
+        $sql = "UPDATE payment 
                 SET booking_id=:booking,customer_name=:customer_name,show_time_id=:show_time,payment_type_id=:payment_type,account_no=:account_no,
                 total_price=:total_price WHERE id=:id";
         $statement = $conn->prepare($sql);
@@ -76,7 +76,7 @@ class BookingPayment {
     public function deleteBookingPaymentInfo($id){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "DELETE FROM booking_payment WHERE id=:id";
+        $sql = "DELETE FROM payment WHERE id=:id";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':id',$id);
         try{
@@ -94,7 +94,7 @@ class BookingPayment {
         try {
             $conn = Database::connect();
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);          
-            $sql = "UPDATE booking_payment SET status = 'Accepted' WHERE id = :id";          
+            $sql = "UPDATE payment SET status = 'Accepted' WHERE id = :id";          
             $statement = $conn->prepare($sql);
             $statement->bindParam(':id', $id);
             return $statement->execute();
@@ -109,7 +109,7 @@ class BookingPayment {
         try {
             $conn = Database::connect();
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);           
-            $sql = "UPDATE booking_payment SET status = 'Declined' WHERE id = :id";         
+            $sql = "UPDATE payment SET status = 'Declined' WHERE id = :id";         
             $statement = $conn->prepare($sql);
             $statement->bindParam(':id', $id);
             return $statement->execute();
@@ -127,8 +127,8 @@ class BookingPayment {
             
             $sql = "SELECT user.email 
                     FROM user 
-                    JOIN booking_payment ON user.id = booking_payment.user_id 
-                    WHERE booking_payment.id = :id";
+                    JOIN payment ON user.id = payment.user_id 
+                    WHERE payment.id = :id";
     
             $statement = $conn->prepare($sql);
             $statement->bindParam(':id', $id);

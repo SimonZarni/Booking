@@ -80,20 +80,20 @@ if (isset($_SESSION['id'])) {
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="../payment/payment.php">
-							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Payment Method</span>
-						</a>
-					</li>
-
-					<li class="sidebar-item">
 						<a class="sidebar-link" href="../booking/booking.php">
 							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Booking</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="../bookingPayment/bookingPayment.php">
+						<a class="sidebar-link" href="../bookingPayment/payment.php">
 							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Payment</span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="../payment/payment_method.php">
+							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Payment Type</span>
 						</a>
 					</li>
 

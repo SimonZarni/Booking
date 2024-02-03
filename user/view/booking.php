@@ -12,10 +12,8 @@ $movie_controller = new MovieController();
 $movies = $movie_controller->getMovies();
 
 $showtime_controller = new ShowTimeController();
-$showtimes = $showtime_controller->getShowTimes();
 
 $theater_controller = new TheaterController();
-$theaters = $theater_controller->getTheaters();
 
 if (isset($_POST['submit'])) {
     if (!isset($_SESSION['user_id'])) {
@@ -81,24 +79,24 @@ if (isset($_POST['submit'])) {
                     </select>
                 </div>
 
+                <?php
+                $showtimes = $showtime_controller->getShowTimes($selectedMovieId);
+                $theaters = $theater_controller->getTheaters($selectedMovieId);
+                ?>
+
                 <div class="my-3">
                     <label for="" class="form-label">Date</label>
                     <input type="date" name="date" value="<?php if (isset($_POST['date'])) echo $_POST['date']; ?>" class="form-control">
                 </div>
 
+
                 <div class="my-3">
-                    <label for="" class="form-label">Show Time</label>
+                    <label for="" class="form-label">Showtime</label>
                     <select name="show_time" id="" class="form-select">
                         <option value="" selected disabled>Select showtime</option>
-                        <?php
-                        foreach ($showtimes as $showtime) {
-                        ?>
-                            <option value="<?php echo $showtime['id']; ?>" <?php if ((isset($_POST['show_time']) && $_POST['show_time']) == $showtime['id']) echo 'selected'; ?>>
-                                <?php echo $showtime['show_time']; ?>
-                            </option>
-                        <?php
-                        }
-                        ?>
+                        <?php foreach ($showtimes as $showtime) { ?>
+                            <option value="<?php echo $showtime['id']; ?>"><?php echo $showtime['show_time']; ?></option>
+                        <?php } ?>
                     </select>
                 </div>
 
@@ -106,15 +104,9 @@ if (isset($_POST['submit'])) {
                     <label for="" class="form-label">Theater</label>
                     <select name="theater" id="" class="form-select">
                         <option value="" selected disabled>Select theater</option>
-                        <?php
-                        foreach ($theaters as $theater) {
-                        ?>
-                            <option value="<?php echo $theater['id']; ?>" <?php if ((isset($_POST['theater']) && $_POST['theater']) == $theater['id']) echo 'selected'; ?>>
-                                <?php echo $theater['name']; ?>
-                            </option>
-                        <?php
-                        }
-                        ?>
+                        <?php foreach ($theaters as $theater) { ?>
+                            <option value="<?php echo $theater['id']; ?>"><?php echo $theater['name']; ?></option>
+                        <?php } ?>
                     </select>
                 </div>
 
@@ -135,7 +127,7 @@ if (isset($_POST['submit'])) {
 
                 <div class="my-3">
                     <label for="" class="form-label">User ID</label>
-                    <input type="text" name="userID" value="<?php if(isset($_SESSION['user_id'])) echo $_SESSION['user_id']; ?>" class="form-control">
+                    <input type="text" name="userID" value="<?php if (isset($_SESSION['user_id'])) echo $_SESSION['user_id']; ?>" class="form-control">
                 </div>
 
                 <div class="mt-3">

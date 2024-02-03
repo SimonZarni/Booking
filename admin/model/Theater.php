@@ -7,7 +7,7 @@ class Theater {
     public function getTheaterInfo(){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM theater";
+        $sql = "SELECT theater.*, movie.name as movie FROM theater JOIN movie ON theater.movie_id = movie.id";
         $statement = $conn->prepare($sql);
         if($statement->execute()){
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -15,12 +15,13 @@ class Theater {
         return $result;
     }
 
-    public function addTheater($name){
+    public function addTheater($name,$movie){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "INSERT INTO theater(name) VALUES(:name)";
+        $sql = "INSERT INTO theater(name,movie_id) VALUES(:name,:movie)";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':name',$name);
+        $statement->bindParam(':movie',$movie);
         if($statement->execute())
         {
             return true;
@@ -42,13 +43,14 @@ class Theater {
         return $result;
     }
 
-    public function updateTheaterInfo($id,$name){
+    public function updateTheaterInfo($id,$name,$movie){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "UPDATE theater set name=:name WHERE id=:id";
+        $sql = "UPDATE theater set name=:name, movie_id = :movie WHERE id=:id";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':id',$id);
         $statement->bindParam(':name',$name);
+        $statement->bindParam(':movie',$movie);
         if($statement->execute())
         {
             return true;        

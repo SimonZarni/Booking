@@ -7,7 +7,7 @@ class Payment {
     public function getPaymentInfo(){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM payment";
+        $sql = "SELECT * FROM payment_method";
         $statement = $conn->prepare($sql);
         if($statement->execute()){
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);

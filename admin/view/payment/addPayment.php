@@ -10,7 +10,7 @@ if(isset($_POST['submit'])){
     $status = $payment_controller->createPayment($payment);
 
     if($status){
-        echo '<script>location.href="payment.php?status=' .$status. '"</script>';
+        echo '<script>location.href="payment_method.php?status=' .$status. '"</script>';
     }
 }
 

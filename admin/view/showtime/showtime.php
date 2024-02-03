@@ -40,6 +40,7 @@ $showtimes = $showtime_controller->getShowTimes();
             <thead>
                 <th>No</th>
                 <th>Show Time</th>
+                <th>Movie</th>
                 <th>Action</th>
             </thead>
             <tbody>
@@ -49,6 +50,7 @@ $showtimes = $showtime_controller->getShowTimes();
                     echo "<tr>";
                     echo "<td>" . $count++ . "</td>";
                     echo "<td>" . $showtime['show_time'] . "</td>";
+                    echo "<td>" . $showtime['movie'] . "</td>";
                     echo "<td>";
                     echo "<a class='btn btn-primary' href='editShowTime.php?id=".$showtime['id']."'>Edit</a>";
                     echo "<a class='btn btn-danger mx-2' href='deleteShowTime.php?id=".$showtime['id']."' onclick='return deleteShowTime()'>Delete</a>";

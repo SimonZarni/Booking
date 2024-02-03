@@ -7,7 +7,7 @@ class Payment {
     public function getPaymentInfo(){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM payment";
+        $sql = "SELECT * FROM payment_method";
         $statement = $conn->prepare($sql);
         if($statement->execute()){
             $result = $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -18,7 +18,7 @@ class Payment {
     public function addPayment($payment){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "INSERT INTO payment(payment_type) VALUES(:payment_type)";
+        $sql = "INSERT INTO payment_method(payment_type) VALUES(:payment_type)";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':payment_type',$payment);
         if($statement->execute())
@@ -33,7 +33,7 @@ class Payment {
     public function getPaymentList($id){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "SELECT * FROM payment WHERE id=:id";
+        $sql = "SELECT * FROM payment_method WHERE id=:id";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':id',$id);
         if($statement->execute()){
@@ -45,7 +45,7 @@ class Payment {
     public function updatePaymentInfo($id,$name){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "UPDATE payment set payment_type=:name WHERE id=:id";
+        $sql = "UPDATE payment_method set payment_type=:name WHERE id=:id";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':id',$id);
         $statement->bindParam(':name',$name);
@@ -61,7 +61,7 @@ class Payment {
     public function deletePaymentInfo($id){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "DELETE FROM payment WHERE id=:id";
+        $sql = "DELETE FROM payment_method WHERE id=:id";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':id',$id);
         try{

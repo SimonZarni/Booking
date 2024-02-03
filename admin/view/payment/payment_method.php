@@ -16,7 +16,7 @@ $payments = $payment_controller->getPayments();
     <title>Document</title>
 </head>
 <body>
-<h2 class="mt-1"><strong>Payment</strong></h2>
+<h2 class="mt-1"><strong>Payment Types</strong></h2>
     <?php
     if(isset($_GET['status']) && $_GET['status']==true)
     {

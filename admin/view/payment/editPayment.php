@@ -13,7 +13,7 @@ if(isset($_POST['submit'])){
     $updateStatus = $payment_controller->editPayment($id,$name);
 
     if($updateStatus){
-        echo '<script>location.href="payment.php?updateStatus=' .$updateStatus. '"</script>';
+        echo '<script>location.href="payment_method.php?updateStatus=' .$updateStatus. '"</script>';
     }
 }
 
