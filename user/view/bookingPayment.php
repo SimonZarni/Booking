@@ -3,7 +3,6 @@
 include_once __DIR__ . '/../layouts/navbar.php';
 include_once  __DIR__ . '/../controller/BookingPaymentController.php';
 include_once  __DIR__ . '/../controller/BookingController.php';
-include_once  __DIR__ . '/../controller/ShowTimeController.php';
 include_once  __DIR__ . '/../controller/PaymentController.php';
 
 $booking_payment_controller = new BookingPaymentController();
@@ -11,9 +10,6 @@ $booking_payment_controller = new BookingPaymentController();
 $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 $booking_controller = new BookingController();
 $bookings = $booking_controller->getBookings($user_id);
-
-$showtime_controller = new ShowTimeController();
-$showtimes = $showtime_controller->getShowTimes();
 
 $payment_controller = new PaymentController();
 $payments = $payment_controller->getPayments();
@@ -53,7 +49,7 @@ if (isset($_POST['submit'])) {
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="my-3">
                     <label for="" class="form-label">User</label>
-                    <input type="text" name="user" value="<?php if (isset($_SESSION['name'])) echo $_SESSION['name']; ?>" class="form-control">
+                    <input type="text" name="user" value="<?php if (isset($_SESSION['user_name'])) echo $_SESSION['user_name']; ?>" class="form-control">
                 </div>
 
                 <div class="my-3">

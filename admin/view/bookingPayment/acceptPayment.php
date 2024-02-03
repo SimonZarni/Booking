@@ -8,10 +8,10 @@ $accept_controller = new BookingPaymentController();
 $accept = $accept_controller->acceptPayment($id);
 
 if ($accept) {
-    header("Location: bookingPayment.php?acceptstatus=accepted");
+    header("Location: payment.php?acceptstatus=accepted");
     exit();
 } else {
-    header("Location: bookingPayment.php?acceptstatus=error");
+    header("Location: payment.php?acceptstatus=error");
     exit();
 }
 

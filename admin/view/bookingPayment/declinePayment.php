@@ -8,10 +8,10 @@ $decline_controller = new BookingPaymentController();
 $decline = $decline_controller->declinePayment($id);
 
 if ($decline) {
-    header("Location: bookingPayment.php?declinestatus=declined");
+    header("Location: payment.php?declinestatus=declined");
     exit();
 } else {
-    header("Location: bookingPayment.php?declinestatus=error");
+    header("Location: payment.php?declinestatus=error");
     exit();
 }
 
