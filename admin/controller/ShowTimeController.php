@@ -8,8 +8,8 @@ class ShowTimeController extends ShowTime{
         return $this->getShowTimeInfo();
     }
 
-    public function createShowTime($showtime,$movie){
-        return $this->addShowTime($showtime,$movie);
+    public function createShowTime($showtime){
+        return $this->addShowTime($showtime);
     }
 
     public function getShowTimeById($id){
@@ -22,6 +22,18 @@ class ShowTimeController extends ShowTime{
 
     public function deleteShowTime($id){
         return $this->deleteShowTimeInfo($id);
+    }
+
+    public function joinMovieShowtime($movie,$showtime){
+        return $this->movieShowtime($movie,$showtime);
+    }
+
+    public function getMoviesShowtimes(){
+        return $this->getMovieShowtime();
+    }
+
+    public function deleteData($id){
+        return $this->deleteMovieShowtime($id);
     }
 }
 

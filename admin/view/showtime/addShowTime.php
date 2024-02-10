@@ -11,8 +11,7 @@ $movies = $movie_controller->getMovies();
 
 if(isset($_POST['submit'])){
     $showtime = $_POST['name'];
-    $movie = $_POST['movie'];
-    $status = $showtime_controller->createShowTime($showtime,$movie);
+    $status = $showtime_controller->createShowTime($showtime);
 
     if($status){
         echo '<script>location.href="showtime.php?status=' .$status. '"</script>';
@@ -36,22 +35,6 @@ if(isset($_POST['submit'])){
                 <div class="my-3">
                     <label for="" class="form-label">Show Time</label>
                     <input type="text" name="name" value="<?php if(isset($_POST['name'])) echo $_POST['name']; ?>" class="form-control">
-                </div>
-
-                <div class="my-3">
-                    <label for="" class="form-label">Movie</label>
-                    <select name="movie" id="" class="form-select">
-                        <option value="" selected disabled>Select movie</option>
-                        <?php
-                        foreach ($movies as $movie) {
-                        ?>
-                            <option value="<?php echo $movie['id']; ?>" <?php if((isset($_POST['movie']) && $_POST['movie']) == $movie['id']) echo 'selected'; ?>>
-                                <?php echo $movie['name']; ?>
-                            </option>
-                        <?php
-                        }
-                        ?>
-                    </select>
                 </div>
 
                 <div class="mt-3">

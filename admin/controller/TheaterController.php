@@ -23,6 +23,18 @@ class TheaterController extends Theater {
     public function deleteTheater($id){
         return $this->deleteTheaterInfo($id);
     }
+
+    public function joinMovieTheater($movie,$theater){
+        return $this->movieTheater($movie,$theater);
+    }
+
+    public function getMoviesTheaters(){
+        return $this->getMovieTheater();
+    }
+
+    public function deleteData($id){
+        return $this->deleteMovieTheater($id);
+    }
 }
 
 ?>

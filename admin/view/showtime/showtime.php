@@ -31,37 +31,37 @@ $showtimes = $showtime_controller->getShowTimes();
     }
     ?>
 
-    <div class="col-md-4 mt-3">
+    <div class="col-md-6 mt-3">
         <a class='btn btn-success p-2' href='addShowTime.php'>Add New Show Time</a>
+        <a class='btn btn-primary p-2 mx-2' href="movieShowtime.php">Join with movie</a>
+        <a class='btn btn-danger p-2 mx-2' href="moviewithShowtime.php">Showtimes and movies</a>
     </div>
-<div class="row mt-3">
-    <div class="col-md-12">
-        <table class="table table-striped" id="showTable">
-            <thead>
-                <th>No</th>
-                <th>Show Time</th>
-                <th>Movie</th>
-                <th>Action</th>
-            </thead>
-            <tbody>
-                <?php
-                $count = 1;
-                    foreach ($showtimes as $showtime) {
-                    echo "<tr>";
-                    echo "<td>" . $count++ . "</td>";
-                    echo "<td>" . $showtime['show_time'] . "</td>";
-                    echo "<td>" . $showtime['movie'] . "</td>";
-                    echo "<td>";
-                    echo "<a class='btn btn-primary' href='editShowTime.php?id=".$showtime['id']."'>Edit</a>";
-                    echo "<a class='btn btn-danger mx-2' href='deleteShowTime.php?id=".$showtime['id']."' onclick='return deleteShowTime()'>Delete</a>";
-                    echo "</td>";
-                    echo "</tr>";
-                }
-                ?>
-            </tbody>
-        </table>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <table class="table table-striped" id="showTable">
+                <thead>
+                    <th>No</th>
+                    <th>Show Time</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                    <?php
+                    $count = 1;
+                        foreach ($showtimes as $showtime) {
+                        echo "<tr>";
+                        echo "<td>" . $count++ . "</td>";
+                        echo "<td>" . $showtime['show_time'] . "</td>";
+                        echo "<td>";
+                        echo "<a class='btn btn-primary' href='editShowTime.php?id=".$showtime['id']."'>Edit</a>";
+                        echo "<a class='btn btn-danger mx-2' href='deleteShowTime.php?id=".$showtime['id']."' onclick='return deleteShowTime()'>Delete</a>";
+                        echo "</td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 
 </body>
 

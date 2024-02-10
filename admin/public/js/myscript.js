@@ -30,6 +30,14 @@ function deleteUser(){
     return confirm("Are you sure to delete this user?");
 }
 
+function deleteMovieTheater(){
+    return confirm("Are you sure to delete this joined movie and theater?");
+}
+
+function deleteMovieShowtime(){
+    return confirm("Are you sure to delete this joined movie and showtime?");
+}
+
 $(document).ready(function () {
     $('#catTable').DataTable({
         "paging": true,
