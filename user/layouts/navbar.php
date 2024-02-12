@@ -72,26 +72,38 @@ if (isset($_SESSION['user_id'])) {
           <ul class="navbar-nav mb-0 ms-auto">
 
             <li class="nav-item">
-              <select name="categories" class="form-select bg-light" required="">
-                <option value="">All Categories</option>
-                <?php
-                foreach ($categories as $category) {
-                ?>
-                  <option value="<?php echo $category['id']; ?>" <?php if ((isset($_POST['category']) && $_POST['category']) == $category['id']) echo 'selected'; ?>>
-                    <?php echo $category['name']; ?>
-                  </option>
-                <?php
-                }
-                ?>
-              </select>
+              <form action="displayMovies.php" method="post">
+                <select name="category" class="form-select bg-light col-md-6">
+                  <option value="">All Categories</option>
+                  <?php
+                  foreach ($categories as $category) {
+                    $selected = "";
+                    if (isset($_POST['category']) && $_POST['category'] == $category['id']) {
+                      $selected = 'selected';
+                    }
+                  ?>
+                    <option value="<?php echo $category['id']; ?>" <?php echo $selected; ?>>
+                      <?php echo $category['name']; ?>
+                    </option>
+                  <?php
+                  }
+                  ?>
+                </select>
+                <button class="btn btn-primary bg_yell" type="submit">
+                  <i class="fa fa-search" style="height: 28px;"></i>
+                </button>
+              </form>
 
-              <div class="input-group">
-                <input type="text" class="form-control border-start-0" placeholder="Search Movie">
-                <span class="input-group-btn">
-                  <button class="btn btn-primary bg_yell" type="button">
-                    <i class="fa fa-search" style="height: 28px;"></i> </button>
-                </span>
-              </div>
+              <form action="searchMovies.php" method="get">
+                <div class="input-group">
+                  <input type="text" name="keyword" class="form-control border-start-0" placeholder="Search Movie">
+                  <span class="input-group-btn">
+                    <button class="btn btn-primary bg_yell" type="submit">
+                      <i class="fa fa-search" style="height: 28px;"></i>
+                    </button>
+                  </span>
+                </div>
+              </form>
             </li>
 
             <?php
