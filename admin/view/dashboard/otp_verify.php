@@ -10,12 +10,14 @@ if (isset($_POST['otp_submit'])) {
     if ($_POST['otp'] == $_SESSION['otp']) {
         $auth_controller = new AuthenticationController();
         $status = $auth_controller->createAdmin($name, $email, $password);
+        $admin_info = $auth_controller->getAdmins();
+        foreach($admin_info as $admin){
+            $admin_id = $admin['id'];
+        }
         if (!empty($status)) {
-            $id = $auth_controller->getAdminByEmail($status);
-            session_start();
-            $_SESSION['id'] = $id;
+            $_SESSION['id'] = $admin_id;
             $_SESSION['name'] = $name;
-            echo '<script>location.href="../dashboard/index.php"</script>';
+            echo '<script>location.href="login.php"</script>';
             exit;
         }
     } else {
@@ -50,7 +52,7 @@ if (isset($_POST['otp_submit'])) {
         <div class="col-md-3 mt-2">
             <input type="submit" class="btn btn-success" name="otp_submit">
         </div>
-        <?php if (isset($otpError)) echo '<span class="text-danger">' . $otp_error . '</span>'; ?>
+        <?php if (isset($otp_error)) echo '<span class="text-danger">' . $otp_error . '</span>'; ?>
     </form>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

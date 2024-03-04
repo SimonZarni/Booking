@@ -7,8 +7,6 @@ $booking_payment_controller = new BookingPaymentController();
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
     $booking_payments = $booking_payment_controller->getBookingPayments($user_id);
-} else {
-    $booking_payments = [];
 } 
 
 ?>

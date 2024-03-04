@@ -89,23 +89,22 @@ if (isset($_POST['submit'])) {
                     <input type="date" name="date" value="<?php if (isset($_POST['date'])) echo $_POST['date']; ?>" class="form-control">
                 </div>
 
-
-                <div class="my-3">
-                    <label for="" class="form-label">Showtime</label>
-                    <select name="show_time" id="" class="form-select">
-                        <option value="" selected disabled>Select showtime</option>
-                        <?php foreach ($showtimes as $showtime) { ?>
-                            <option value="<?php echo $showtime['id']; ?>"><?php echo $showtime['show_time']; ?></option>
-                        <?php } ?>
-                    </select>
-                </div>
-
                 <div class="my-3">
                     <label for="" class="form-label">Theater</label>
                     <select name="theater" id="" class="form-select">
                         <option value="" selected disabled>Select theater</option>
                         <?php foreach ($theaters as $theater) { ?>
                             <option value="<?php echo $theater['id']; ?>"><?php echo $theater['name']; ?></option>
+                        <?php } ?>
+                    </select>
+                </div>
+                
+                <div class="my-3">
+                    <label for="" class="form-label">Showtime</label>
+                    <select name="show_time" id="" class="form-select">
+                        <option value="" selected disabled>Select showtime</option>
+                        <?php foreach ($showtimes as $showtime) { ?>
+                            <option value="<?php echo $showtime['id']; ?>"><?php echo $showtime['show_time']; ?></option>
                         <?php } ?>
                     </select>
                 </div>

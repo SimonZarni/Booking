@@ -45,17 +45,6 @@ class Authentication {
         return $result;
     }
 
-    public function adminByEmail($email){
-        $conn=Database::connect();
-        $sql='SELECT id FROM admin WHERE email = :email';
-        $statement = $conn->prepare($sql);
-        $statement->bindParam(':email',$email);
-        if ($statement->execute()){
-            $result = $statement->fetch(PDO::FETCH_ASSOC);
-        }
-        return $result;
-    }
-
     public function updatePassword($password,$id){
         $conn = Database::connect();
         $sql = "UPDATE admin SET password = :password WHERE id = :id";
@@ -68,6 +57,16 @@ class Authentication {
         } else {
             return false;
         }
+    }
+
+    public function isEmailExists($email){
+        $conn = Database::connect();
+        $sql = "SELECT COUNT(*) as count FROM admin WHERE email = :email";
+        $statement = $conn->prepare($sql);
+        $statement->bindParam(':email',$email);
+        $statement->execute();
+        $count = $statement->fetchColumn();
+        return $count > 0;
     }
 }
 

@@ -5,27 +5,30 @@ session_start();
 include_once __DIR__ . '/../controller/AuthenticationController.php';
 
 $auth_controller = new AuthenticationController();
-$conPasswordError = "";
 
 if (isset($_POST['submit'])) {
-	$name = $_POST['name'];
-	$email = $_POST['email'];
-	$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-	$con_password = $_POST['con_password'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $con_password = $_POST['con_password'];
 
-	if ($_POST['password'] != $_POST['con_password'])
-		$conPasswordError = 'Password and Confirm Password do not match.';
-	else {
-		$otp = $auth_controller->sendMail($email);
-		if (!empty($otp)) {
-			$_SESSION['otp'] = $otp;
-			$_SESSION['name'] = $name;
-			$_SESSION['email'] = $email;
-			$_SESSION['password'] = $password;
-		}
-		echo '<script>location.href="otp_verify.php"</script>';
-		exit;
-	}
+    if ($_POST['password'] != $_POST['con_password']) {
+        $error = 'Password and Confirm Password do not match.';
+    } else {
+        if ($auth_controller->emailExists($email)) {
+            $error = "User with this email already exists.";
+        } else {
+            $otp = $auth_controller->sendMail($email);
+            if (!empty($otp)) {
+                $_SESSION['otp'] = $otp;
+                $_SESSION['name'] = $name;
+                $_SESSION['email'] = $email;
+                $_SESSION['password'] = $password;
+            }
+            echo '<script>location.href="otp_verify.php"</script>';
+            exit;
+        }
+    }
 }
 
 ?>
@@ -79,7 +82,7 @@ if (isset($_POST['submit'])) {
 											<input class="form-control form-control-lg" type="password" name="con_password" placeholder="Enter confirm password" value="<?php if (isset($_POST['con_password'])) echo $_POST['con_password']; ?>" />
 										</div>
 										<?php
-										if (isset($conPasswordError))  echo '<span class="text-danger">' . $conPasswordError . '</span>';
+										if (isset($error))  echo '<span class="text-danger">' . $error . '</span>';
 										?>
 										<div class="d-grid gap-2 mt-3">
 											<button class="btn btn-lg btn-primary" type="submit" name="submit">Sign up</button>

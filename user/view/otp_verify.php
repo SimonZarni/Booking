@@ -11,16 +11,18 @@ if (isset($_POST['otp_submit'])) {
     if ($_POST['otp'] == $_SESSION['otp']) {
         $auth_controller = new AuthenticationController();
         $status = $auth_controller->createUser($name, $email, $password);
+        $user_info = $auth_controller->getUsers();
+        foreach($user_info as $user){
+            $user_id = $user['id'];
+        }
         if (!empty($status)) {
-            $id = $auth_controller->getUserByEmail($status);
-            session_start();
-            $_SESSION['user_id'] = $id;
+            $_SESSION['user_id'] = $user_id;
             $_SESSION['user_name'] = $name;
-            echo '<script>location.href="login.php"</script>';
+            echo '<script>location.href="index.php"</script>';
             exit;
         }
     } else {
-        $otp_error = "Invalid OTP";
+        $error = "Invalid OTP.";
     }
 }
 
@@ -49,7 +51,7 @@ if (isset($_POST['otp_submit'])) {
         <div class="col-md-3 mt-2">
             <input type="submit" class="btn btn-success" name="otp_submit">
         </div>
-        <?php if (isset($otpError)) echo '<span class="text-danger">' . $otp_error . '</span>'; ?>
+        <?php if (isset($error)) echo '<span class="text-danger">' . $error . '</span>'; ?>
     </form>
 
     <script src="../public/js/bootstrap.bundle.min.js"></script>

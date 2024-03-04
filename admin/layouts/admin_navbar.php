@@ -124,7 +124,7 @@ if (isset($_SESSION['id'])) {
 									<span class="text-dark"><?php echo $_SESSION['name']; ?></span>
 								</a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-									<a class="dropdown-item" href="../features/change_password.php">Change Password</a>
+									<a class="dropdown-item" href="../dashboard/change_password.php">Change Password</a>
 									<a class="dropdown-item" href="../dashboard/logout.php">Log Out</a>
 								</div>
 							</div>

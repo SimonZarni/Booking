@@ -23,10 +23,6 @@ class AuthenticationController extends Authentication {
         return $this->getUserList($id);
     }
 
-    public function getUserByEmail($email){
-        return $this->userByEmail($email);
-    }
-
     public function sendMail($email){
         $otp = rand(1000,9999);
    
@@ -56,6 +52,10 @@ class AuthenticationController extends Authentication {
 
     public function changePassword($password,$id){
         return $this->updatePassword($password,$id);
+    }
+
+    public function emailExists($email){
+        return $this->isEmailExists($email);
     }
 }
 

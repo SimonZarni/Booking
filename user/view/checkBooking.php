@@ -8,9 +8,7 @@ $booking_controller = new BookingController();
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
     $bookings = $booking_controller->getBookings($user_id);
-} else {
-    $bookings = [];
-}
+} 
 
 ?>
 
