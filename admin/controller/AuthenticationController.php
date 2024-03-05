@@ -64,6 +64,36 @@ class AuthenticationController extends Authentication {
     public function emailExists($email){
         return $this->isEmailExists($email);
     }
+
+    public function resetPassword($email){
+        $otp = rand(1000, 9999);
+
+        $mailer = new PHPMailer(true);
+
+        $mailer->isSMTP();
+        $mailer->Host = 'smtp.gmail.com';
+        $mailer->SMTPAuth = true;
+        $mailer->SMTPSecure = 'tls';
+        $mailer->Port = 587;
+
+        $mailer->Username = "simonzarni03@gmail.com";
+        $mailer->Password = "zgkw ngcn ycry czzz";
+
+        $mailer->setFrom("simonzarni03@gmail.com", "Cinemax");
+        $mailer->addAddress($email);
+
+        $mailer->IsHTML(true);
+        $mailer->Subject = "Reset your password with OTP code.";
+        $mailer->Body = 'Your OTP code is ' . $otp.'.';
+
+        if ($mailer->send()) {
+            return $otp;
+        }
+    }
+
+    public function updatePassword($password,$email){
+        return $this->editPassword($password,$email);
+    }
 }
 
 ?>

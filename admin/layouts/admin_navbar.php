@@ -10,7 +10,7 @@ if (isset($_SESSION['id'])) {
 	$admin_controller = new AuthenticationController();
 	$admin = $admin_controller->getAdminById($_SESSION['id']);
 } else {
-	$admin = null;
+	$admin = "";
 }
 
 ?>
@@ -121,7 +121,7 @@ if (isset($_SESSION['id'])) {
 						?>
 							<div class="dropdown">
 								<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<span class="text-dark"><?php echo $_SESSION['name']; ?></span>
+									<span class="text-dark"><?php if(isset($_SESSION['name'])) echo $_SESSION['name']; ?></span>
 								</a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 									<a class="dropdown-item" href="../dashboard/change_password.php">Change Password</a>

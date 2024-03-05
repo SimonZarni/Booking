@@ -75,11 +75,11 @@ if (isset($_POST['submit'])) {
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Password</label>
-											<input class="form-control form-control-lg" type="password" name="password" placeholder="Enter password" value="<?php if (isset($_POST['password'])) echo $_POST['password']; ?>" />
+											<input class="form-control form-control-lg" type="password" name="password" placeholder="Enter password" value="" />
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Confirm Password</label>
-											<input class="form-control form-control-lg" type="password" name="con_password" placeholder="Enter confirm password" value="<?php if (isset($_POST['con_password'])) echo $_POST['con_password']; ?>" />
+											<input class="form-control form-control-lg" type="password" name="con_password" placeholder="Enter confirm password" value="" />
 										</div>
 										<?php
 										if (isset($error))  echo '<span class="text-danger">' . $error . '</span>';

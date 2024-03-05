@@ -2,29 +2,32 @@
 
 session_name('user_session');
 session_start();
-include_once __DIR__ . '/../controller/AuthenticationController.php';
+include_once  __DIR__ . '/../controller/AuthenticationController.php';
+
+$auth_controller = new AuthenticationController();
 
 if (isset($_POST['submit'])) {
-    $name = $_SESSION['name'];
+    $password = $_POST['password'];
+    $con_password = $_POST['con_password'];
     $email = $_SESSION['email'];
-    $password = $_SESSION['password'];
-    if ($_POST['otp'] == $_SESSION['otp']) {
-        $auth_controller = new AuthenticationController();
-        $status = $auth_controller->createUser($name, $email, $password);
-        $user_info = $auth_controller->getUsers();
-        foreach($user_info as $user){
-            $user_id = $user['id'];
-        }
-        if (!empty($status)) {
-            $_SESSION['user_id'] = $user_id;
-            $_SESSION['user_name'] = $name;
+
+    if ($password === $con_password) {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $status = $auth_controller->updatePassword($hashed_password, $email);
+        if ($status) {
+            $user_info = $auth_controller->getUsers();
+            foreach ($user_info as $user) {
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user_name'] = $user['name'];
+            }
             echo '<script>location.href="index.php"</script>';
             exit;
         }
     } else {
-        $error = "Invalid OTP.";
+        $error = "Password and confirm password do not match.";
     }
 }
+
 
 ?>
 
@@ -45,19 +48,21 @@ if (isset($_POST['submit'])) {
 <body>
     <form action="" method="post">
         <div class="col-md-3">
-            <label for="" class="form-lable">OTP</label>
-            <input type="number" placeholder="Enter your OTP code here" name="otp" class="form-control">
+            <label for="" class="form-lable">Password</label>
+            <input type="password" name="password" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <label for="" class="form-lable">Confirm Password</label>
+            <input type="password" name="con_password" class="form-control">
         </div>
         <div class="col-md-3 mt-2">
             <button type="submit" class="btn btn-success" name="submit">Submit</button>
         </div>
         <?php if (isset($error)) echo '<span class="text-danger">' . $error . '</span>'; ?>
     </form>
-
     <script src="../public/js/bootstrap.bundle.min.js"></script>
     <script src="../public/js/app.js"></script>
     <script src="../public/js/myscript.js"></script>
-
 </body>
 
 </html>

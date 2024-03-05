@@ -61,13 +61,16 @@ if (isset($_POST['submit'])) {
 										</div>
 										<div class="mb-3">
 											<label class="form-label">Password</label>
-											<input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password" value="<?php if (isset($_POST['password'])) echo $_POST['password']; ?>" />
+											<input class="form-control form-control-lg" type="password" name="password" placeholder="Enter your password" value="" />
 										</div>
 										<div>
 											<div class="form-check align-items-center">
 												<input id="customControlInline" type="checkbox" class="form-check-input" value="remember-me" name="remember-me" checked>
 												<label class="form-check-label text-small" for="customControlInline">Remember me</label>
 											</div>
+										</div>
+										<div>
+											<a href="forget_password.php">Forgot password?</a>
 										</div>
 										<?php
 										if (!empty($passwordError)) echo '<span class="text-danger">' . $passwordError . '</span>';

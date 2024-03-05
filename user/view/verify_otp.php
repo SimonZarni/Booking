@@ -2,27 +2,12 @@
 
 session_name('user_session');
 session_start();
-include_once __DIR__ . '/../controller/AuthenticationController.php';
 
 if (isset($_POST['submit'])) {
-    $name = $_SESSION['name'];
-    $email = $_SESSION['email'];
-    $password = $_SESSION['password'];
     if ($_POST['otp'] == $_SESSION['otp']) {
-        $auth_controller = new AuthenticationController();
-        $status = $auth_controller->createUser($name, $email, $password);
-        $user_info = $auth_controller->getUsers();
-        foreach($user_info as $user){
-            $user_id = $user['id'];
-        }
-        if (!empty($status)) {
-            $_SESSION['user_id'] = $user_id;
-            $_SESSION['user_name'] = $name;
-            echo '<script>location.href="index.php"</script>';
-            exit;
-        }
+        header("location:setNewPassword.php");
     } else {
-        $error = "Invalid OTP.";
+        $error = 'Invalid OTP';
     }
 }
 
@@ -57,7 +42,6 @@ if (isset($_POST['submit'])) {
     <script src="../public/js/bootstrap.bundle.min.js"></script>
     <script src="../public/js/app.js"></script>
     <script src="../public/js/myscript.js"></script>
-
 </body>
 
 </html>

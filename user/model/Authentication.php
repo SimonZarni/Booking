@@ -68,6 +68,19 @@ class Authentication {
         $count = $statement->fetchColumn();
         return $count > 0;
     }
+
+    public function editPassword($password,$email){
+        $conn = Database::connect();
+        $sql = 'update user set password = :password where email = :email';
+        $statement = $conn->prepare($sql);
+        $statement->bindParam(':password',$password);
+        $statement->bindParam(':email',$email);
+
+        if ($statement->execute())
+        {
+            return true;
+        }     
+    }
 }
 
 ?>
