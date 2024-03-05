@@ -32,7 +32,7 @@ if (isset($_SESSION['id'])) {
 	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 	<link href="https://cdn.datatables.net/v/dt/dt-1.13.5/b-2.4.1/datatables.min.css" rel="stylesheet" />
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -80,6 +80,12 @@ if (isset($_SESSION['id'])) {
 					</li>
 
 					<li class="sidebar-item">
+						<a class="sidebar-link" href="../payment/payment_method.php">
+							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Payment Type</span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
 						<a class="sidebar-link" href="../booking/booking.php">
 							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Booking</span>
 						</a>
@@ -88,12 +94,6 @@ if (isset($_SESSION['id'])) {
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="../bookingPayment/payment.php">
 							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Payment</span>
-						</a>
-					</li>
-
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="../payment/payment_method.php">
-							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Payment Type</span>
 						</a>
 					</li>
 
@@ -121,7 +121,7 @@ if (isset($_SESSION['id'])) {
 						?>
 							<div class="dropdown">
 								<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<span class="text-dark"><?php if(isset($_SESSION['name'])) echo $_SESSION['name']; ?></span>
+									<span class="text-dark"><?php if (isset($_SESSION['name'])) echo $_SESSION['name']; ?></span>
 								</a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 									<a class="dropdown-item" href="../dashboard/change_password.php">Change Password</a>
@@ -129,7 +129,7 @@ if (isset($_SESSION['id'])) {
 								</div>
 							</div>
 						<?php
-						} else { 
+						} else {
 							header('location: ../dashboard/login.php');
 						}
 						?>

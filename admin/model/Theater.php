@@ -15,13 +15,12 @@ class Theater {
         return $result;
     }
 
-    public function addTheater($name,$movie){
+    public function addTheater($name){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "INSERT INTO theater(name,movie_id) VALUES(:name,:movie)";
+        $sql = "INSERT INTO theater(name) VALUES(:name)";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':name',$name);
-        $statement->bindParam(':movie',$movie);
         if($statement->execute())
         {
             return true;

@@ -8,8 +8,8 @@ class TheaterController extends Theater {
         return $this->getTheaterInfo();
     }
 
-    public function createTheater($name,$movie){
-        return $this->addTheater($name,$movie);
+    public function createTheater($name){
+        return $this->addTheater($name);
     }
 
     public function getTheaterById($id){

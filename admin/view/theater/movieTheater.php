@@ -1,14 +1,14 @@
 <?php
 
-include_once __DIR__ . '/../../layouts/admin_navbar.php';
-include_once __DIR__ . '/../../controller/MovieController.php';
+// include_once __DIR__ . '/../../layouts/admin_navbar.php';
 include_once __DIR__ . '/../../controller/TheaterController.php';
-
-$movie_controller = new MovieController();
-$movies = $movie_controller->getMovies();
+include_once __DIR__ . '/../../controller/MovieController.php';
 
 $theater_controller = new TheaterController();
 $theaters = $theater_controller->getTheaters();
+
+$movie_controller = new MovieController();
+$movies = $movie_controller->getMovies();
 
 if (isset($_POST['submit'])) {
     $movie = $_POST['movie'];
@@ -29,6 +29,13 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="../../public/css/app.css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<link href="https://cdn.datatables.net/v/dt/dt-1.13.5/b-2.4.1/datatables.min.css" rel="stylesheet" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -76,6 +83,6 @@ if (isset($_POST['submit'])) {
 
 </html>
 
-<?php
+<!-- <?php
 include_once __DIR__ . '/../../layouts/admin_footer.php';
-?>
+?> -->
