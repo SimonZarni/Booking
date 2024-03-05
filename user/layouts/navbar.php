@@ -111,7 +111,7 @@ if (isset($_SESSION['user_id'])) {
             ?>
               <li class="nav-item ms-3 dropdown">
                 <button class="nav-link dropdown-toggle button" type="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                  <?php if(isset($_SESSION['user_name'])) echo $_SESSION['user_name']; ?>
+                  <?php if (isset($_SESSION['user_name'])) echo $_SESSION['user_name']; ?>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="change_password.php">Change Password</a></li>
@@ -164,6 +164,7 @@ if (isset($_SESSION['user_id'])) {
       }
     }
   </script>
+
 </body>
 
 </html>

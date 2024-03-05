@@ -45,16 +45,9 @@ $movies = $movie_controller->getMovies();
                                     <div class="upcome_2i_lasti row">
                                         <div class="col-md-6">
                                             <div class="upcome_2i_lastil">
-                                                <h5><a href="#"><?php echo $movie['name']; ?></a></h5>
+                                                <h5><a href=""><?php echo $movie['name']; ?></a></h5>
                                                 <h6 class="text-muted"><?php echo $movie['category_name']; ?></h6>
                                                 <h6 class="text-muted"><?php echo $movie['duration']; ?></h6>
-                                                <!-- <span class="col_red">
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </span> -->
                                             </div>
                                         </div>
                                         <div class="col-md-1">
