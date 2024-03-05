@@ -8,8 +8,8 @@ class BookingPaymentController extends BookingPayment {
         return $this->getBookingPaymentInfo($user_id);
     }
 
-    public function createBookingPayment($booking,$customer_name,$payment_type,$account_no,$total_price,$user_id){
-        return $this->addBookingPayment($booking,$customer_name,$payment_type,$account_no,$total_price,$user_id);
+    public function createBookingPayment($booking,$user_name,$payment_type,$account_no,$total_price,$user_id){
+        return $this->addBookingPayment($booking,$user_name,$payment_type,$account_no,$total_price,$user_id);
     }
 
     public function getBookingPaymentById($id){
