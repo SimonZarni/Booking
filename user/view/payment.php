@@ -7,7 +7,7 @@ $booking_payment_controller = new BookingPaymentController();
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
     $booking_payments = $booking_payment_controller->getBookingPayments($user_id);
-} 
+}
 
 ?>
 
@@ -38,6 +38,7 @@ if (isset($_SESSION['user_id'])) {
                         <th>Payment Type</th>
                         <th>Account No</th>
                         <th>Total Price</th>
+                        <th>Action</th>
                     </thead>
                     <tbody>
                         <?php
@@ -50,6 +51,7 @@ if (isset($_SESSION['user_id'])) {
                             echo "<td>" . $booking_payment['payment_type'] . "</td>";
                             echo "<td>" . $booking_payment['account_no'] . "</td>";
                             echo "<td>" . $booking_payment['total_price'] . "</td>";
+                            echo "<td><a class='btn btn-danger mx-2' href='deletePayment.php?id=" . $booking_payment['id'] . "' onclick='return deletePayment()'>Delete</a></td>";
                             echo "</tr>";
                         }
                         ?>
@@ -64,6 +66,12 @@ if (isset($_SESSION['user_id'])) {
     <?php
     }
     ?>
+
+    <script>
+        function deletePayment() {
+            return confirm("Do you want to delete this payment?");
+        }
+    </script>
 
 </body>
 

@@ -8,7 +8,7 @@ $booking_controller = new BookingController();
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
     $bookings = $booking_controller->getBookings($user_id);
-} 
+}
 
 ?>
 
@@ -77,6 +77,8 @@ if (isset($_SESSION['user_id'])) {
                             if ($booking['payment_status'] == null) {
                                 echo "<a class='btn btn-danger mx-2' href='deleteBooking.php?id=" . $booking['id'] . "' onclick='return deleteBooking()'>Delete</a>";
                                 echo "<a class='btn btn-danger mx-2' href='bookingPayment.php?id=" . $booking['id'] . "'>Make Payment</a>";
+                            } elseif ($booking['payment_status'] == 'Paid') {
+                                echo "<a class='btn btn-danger mx-2' href='deleteBooking.php?id=" . $booking['id'] . "' onclick='return deleteBooking()'>Delete</a>";
                             }
                             echo "</td>";
                             echo "</tr>";

@@ -15,6 +15,10 @@ class BookingPaymentController extends BookingPayment {
     public function getBookingPaymentById($id){
         return $this->getBookingPaymentList($id);
     }
+
+    public function deletePayment($id){
+        return $this->deletePaymentInfo($id);
+    }
 } 
 
 ?>

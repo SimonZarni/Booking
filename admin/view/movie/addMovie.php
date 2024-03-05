@@ -15,10 +15,22 @@ if (isset($_POST['submit'])) {
     $category = $_POST['category'];
     $duration = $_POST['duration'];
     $release_date = $_POST['release_date'];
-    $status = $movie_controller->createMovie($name,$image,$category,$duration,$release_date);
 
-    if($status){
-        echo '<script>location.href="movie.php?status=' . $status . '"</script>';
+    if (!empty($image)) {
+        $targetDirectory = "../../uploads/";
+        $targetFile = $targetDirectory . basename($_FILES["image"]["name"]);
+
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFile)) {
+            $status = $movie_controller->createMovie($name, $image, $category, $duration, $release_date);
+
+            if ($status) {
+                echo '<script>location.href="movie.php?status=' . $status . '"</script>';
+            }
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+        }
+    } else {
+        echo "No image uploaded.";
     }
 }
 

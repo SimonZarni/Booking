@@ -52,6 +52,23 @@ class BookingPayment {
         }
         return $result;
     }
+
+    public function deletePaymentInfo($id){
+        $conn = Database::connect();
+        $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        $sql = "DELETE FROM payment WHERE id=:id";
+        $statement = $conn->prepare($sql);
+        $statement->bindParam(':id',$id);
+        try{
+            $statement->execute();
+            return true;
+        }
+        catch(PDOException $e)
+        {
+            echo "Error: " . $e->getMessage();
+            return false;
+        }
+    }
 }
 
 ?>
