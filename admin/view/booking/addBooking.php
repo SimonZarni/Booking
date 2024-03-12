@@ -21,10 +21,6 @@ $theaters = $theater_controller->getTheaters();
 $user_controller = new UserController();
 $users = $user_controller->getUsers();
 
-if (isset($_SESSION['name'])) {
-    $name = $_SESSION['name'];
-}
-
 if (isset($_POST['submit'])) {
     $movie = $_POST['movie'];
     $date = $_POST['date'];
@@ -33,8 +29,9 @@ if (isset($_POST['submit'])) {
     $seat_no = $_POST['seat_no'];
     $no_of_tickets = $_POST['no_of_tickets'];
     $total_price = $_POST['total_price'];
-    $user = $_POST['user'];
-    $status = $booking_controller->createBooking($movie, $date, $showtime, $theater, $seat_no, $no_of_tickets, $total_price, $user);
+    $user_name = $_POST['user_name'];
+    $user_id = $_POST['user_id'];
+    $status = $booking_controller->createBooking($movie, $date, $showtime, $theater, $seat_no, $no_of_tickets, $total_price, $user_name, $user_id);
 
     if ($status) {
         echo '<script>location.href="booking.php?status=' . $status . '"</script>';
@@ -50,13 +47,6 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="../../public/css/app.css" rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
-	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-	<link href="https://cdn.datatables.net/v/dt/dt-1.13.5/b-2.4.1/datatables.min.css" rel="stylesheet" />
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -65,14 +55,19 @@ if (isset($_POST['submit'])) {
             <h2><strong>Add New Booking</strong></h2>
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="my-3">
-                    <label for="" class="form-label">User</label>
-                    <select name="user" id="" class="form-select">
-                        <option value="" selected disabled>Select user</option>
+                   <label for="" class="form-label">User Name</label>
+                   <input type="text" name="user_name" value="<?php if (isset($_POST['user_name'])) echo $_POST['user_name']; ?>" class="form-control">
+                </div>
+
+                <div class="my-3">
+                    <label for="" class="form-label">User ID</label>
+                    <select name="user_id" id="" class="form-select">
+                        <option value="" selected disabled>Select User ID</option>
                         <?php
                         foreach ($users as $user) {
                         ?>
                             <option value="<?php echo $user['id']; ?>" <?php if ((isset($_POST['user']) && $_POST['user']) == $user['id']) echo 'selected'; ?>>
-                                <?php echo $user['name']; ?>
+                                <?php echo $user['id']; ?>
                             </option>
                         <?php
                         }
@@ -148,16 +143,6 @@ if (isset($_POST['submit'])) {
                     <input type="text" name="total_price" value="<?php if (isset($_POST['total_price'])) echo $_POST['total_price']; ?>" class="form-control">
                 </div>
 
-                <!-- <div class="my-3">
-                    <label for="" class="form-label">Customer Name</label>
-                    <input type="text" name="customer_name" value="<?php if (isset($_POST['customer_name'])) echo $_POST['customer_name']; ?>" class="form-control">
-                </div> -->
-
-                <!-- <div class="my-3">
-                    <label for="" class="form-label">Customer Phone</label>
-                    <input type="text" name="customer_phone" value="<?php if (isset($_POST['customer_phone'])) echo $_POST['customer_phone']; ?>" class="form-control">
-                </div> -->
-
                 <div class="mt-3">
                     <button class="btn btn-success" type="submit" name="submit">Add</button>
                 </div>
@@ -171,6 +156,6 @@ if (isset($_POST['submit'])) {
 
 </html>
 
-<?php
+<!-- <?php
 include_once __DIR__ . '/../../layouts/admin_footer.php';
-?>
+?> -->

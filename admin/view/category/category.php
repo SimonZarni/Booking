@@ -6,12 +6,12 @@ include_once __DIR__ . '/../../controller/CategoryController.php';
 $category_controller = new CategoryController();
 $categories = $category_controller->getCategories();
 
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $status = $category_controller->createCategory($name);
 
-    if($status){
-        echo '<script>location.href="category.php?status=' .$status. '"</script>';
+    if ($status) {
+        echo '<script>location.href="category.php?status=' . $status . '"</script>';
     }
 }
 
@@ -24,57 +24,26 @@ if(isset($_POST['submit'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 10% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 600px;
-            position: relative;
-        }
-
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            color: #aaa;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    </style>
 </head>
 
 <body>
     <h2 class="mt-1"><strong>Category</strong></h2>
     <?php
     if (isset($_GET['status']) && $_GET['status'] == true) {
-        echo "<span class='text-success'>New Category has been added successfully.</span>";
+        echo "<div class='alert alert-success'>New Category has been added successfully.</div>";
     }
-    ?>
-
-    <?php
     if (isset($_GET['updateStatus']) && $_GET['updateStatus'] == true) {
-        echo "<span class='text-success'>Category has been updated successfully.</span>";
+        echo "<div class='alert alert-success'>Category has been updated successfully.</div>";
+    }
+    if (isset($_GET['delete_success'])) {
+        echo "<div class='alert alert-success'>Category deleted successfully.</div>";
+    }
+    if (isset($_GET['delete_status'])) {
+        echo "<div class='alert alert-danger'>Category cannot be deleted as it has related movie data.</div>";
     }
     ?>
 
     <div class="col-md-4 mt-3">
-        <!-- <a class='btn btn-success p-2' href='addCategory.php'>Add New Category</a> -->
         <a id="addCategoryBtn" class='btn btn-success p-2' href='addCategory.php'>Add New Category</a>
         <div id="myModal" class="modal">
             <div class="modal-content">

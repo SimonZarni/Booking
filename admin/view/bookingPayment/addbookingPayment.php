@@ -23,15 +23,15 @@ $users = $user_controller->getUsers();
 
 if (isset($_POST['submit'])) {
     $booking = $_POST['booking'];
-    $customer_name = $_POST['customer_name'];
-    $payment_type = $_POST['payment'];
+    $payment_type = $_POST['payment_type'];
     $account_no = $_POST['account_no'];
     $total_price = $_POST['total_price'];
-    $user = $_POST['user'];
-    $status = $booking_payment_controller->createBookingPayment($booking, $customer_name, $payment_type, $account_no, $total_price, $user);
+    $user_name = $_POST['user_name'];
+    $user_id = $_POST['user_id'];
+    $status = $booking_payment_controller->createBookingPayment($booking, $user_name, $payment_type, $account_no, $total_price, $user_id);
 
     if ($status) {
-        echo '<script>location.href="bookingPayment.php?status=' . $status . '"</script>';
+        echo '<script>location.href="payment.php?status=' . $status . '"</script>';
     }
 }
 
@@ -44,13 +44,6 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="../../public/css/app.css" rel="stylesheet">
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="shortcut icon" href="img/icons/icon-48x48.png" />
-	<link rel="canonical" href="https://demo-basic.adminkit.io/" />
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-	<link href="https://cdn.datatables.net/v/dt/dt-1.13.5/b-2.4.1/datatables.min.css" rel="stylesheet" />
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -59,14 +52,19 @@ if (isset($_POST['submit'])) {
             <h2><strong>Add New Booking Payment</strong></h2>
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="my-3">
-                    <label for="" class="form-label">User</label>
-                    <select name="user" id="" class="form-select">
-                        <option value="" selected disabled>Select user</option>
+                   <label for="" class="form-label">User Name</label>
+                   <input type="text" name="user_name" value="<?php if (isset($_POST['user_name'])) echo $_POST['user_name']; ?>" class="form-control" required>
+                </div>
+
+                <div class="my-3">
+                    <label for="" class="form-label">User ID</label>
+                    <select name="user_id" id="" class="form-select">
+                        <option value="" selected disabled>Select User ID</option>
                         <?php
-                        foreach ($users as $user) {
+                        foreach ($bookings as $booking) {
                         ?>
-                            <option value="<?php echo $user['id']; ?>" <?php if ((isset($_POST['user']) && $_POST['user']) == $user['id']) echo 'selected'; ?>>
-                                <?php echo $user['name']; ?>
+                            <option value="<?php echo $booking['user_id']; ?>" <?php if ((isset($_POST['user_id']) && $_POST['user_id']) == $booking['user_id']) echo 'selected'; ?>>
+                                <?php echo $booking['user_id']; ?>
                             </option>
                         <?php
                         }
@@ -90,35 +88,14 @@ if (isset($_POST['submit'])) {
                     </select>
                 </div>
 
-                <!-- <div class="my-3">
-                    <label for="" class="form-label">Customer Name</label>
-                    <input type="text" name="customer_name" value="<?php if (isset($_POST['customer_name'])) echo $_POST['customer_name']; ?>" class="form-control">
-                </div> -->
-
-                <!-- <div class="my-3">
-                    <label for="" class="form-label">Show Time</label>
-                    <select name="show_time" id="" class="form-select">
-                        <option value="" selected disabled>Select showtime</option>
-                        <?php
-                        foreach ($showtimes as $showtime) {
-                        ?>
-                            <option value="<?php echo $showtime['id']; ?>" <?php if ((isset($_POST['show_time']) && $_POST['show_time']) == $showtime['id']) echo 'selected'; ?>>
-                                <?php echo $showtime['show_time']; ?>
-                            </option>
-                        <?php
-                        }
-                        ?>
-                    </select>
-                </div> -->
-
                 <div class="my-3">
-                    <label for="" class="form-label">Payment</label>
-                    <select name="payment" id="" class="form-select">
-                        <option value="" selected disabled>Select payment</option>
+                    <label for="" class="form-label">Payment Type</label>
+                    <select name="payment_type" id="" class="form-select">
+                        <option value="" selected disabled>Select Payment Type</option>
                         <?php
                         foreach ($payments as $payment) {
                         ?>
-                            <option value="<?php echo $payment['id']; ?>" <?php if ((isset($_POST['payment']) && $_POST['payment']) == $payment['id']) echo 'selected'; ?>>
+                            <option value="<?php echo $payment['id']; ?>" <?php if ((isset($_POST['payment_type']) && $_POST['payment_type']) == $payment['id']) echo 'selected'; ?>>
                                 <?php echo $payment['payment_type']; ?>
                             </option>
                         <?php
@@ -129,12 +106,12 @@ if (isset($_POST['submit'])) {
 
                 <div class="my-3">
                     <label for="" class="form-label">Account No</label>
-                    <input type="text" name="account_no" value="<?php if (isset($_POST['account_no'])) echo $_POST['account_no']; ?>" class="form-control">
+                    <input type="text" name="account_no" value="<?php if (isset($_POST['account_no'])) echo $_POST['account_no']; ?>" class="form-control" required>
                 </div>
 
                 <div class="my-3">
                     <label for="" class="form-label">Total Price</label>
-                    <input type="text" name="total_price" value="<?php if (isset($_POST['total_price'])) echo $_POST['total_price']; ?>" class="form-control">
+                    <input type="text" name="total_price" value="<?php if (isset($_POST['total_price'])) echo $_POST['total_price']; ?>" class="form-control" required>
                 </div>
 
                 <div class="mt-3">
@@ -150,6 +127,6 @@ if (isset($_POST['submit'])) {
 
 </html>
 
-<?php
+<!-- <?php
 include_once __DIR__ . '/../../layouts/admin_footer.php';
-?>
+?> -->

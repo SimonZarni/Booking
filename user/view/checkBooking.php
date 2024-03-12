@@ -26,9 +26,6 @@ if (isset($_SESSION['user_id'])) {
     if (isset($_GET['status']) && $_GET['status'] == true) {
         echo "<span class='text-success'>Movie booked successfully.</span>";
     }
-    if (isset($_GET['pay_status']) && $_GET['pay_status'] == true) {
-        echo "<span class='text-success'>Booking paid successfully.</span>";
-    }
     ?>
     <h3 class="mt-1"><strong>Booking history</strong></h3>
 

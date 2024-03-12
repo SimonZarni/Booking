@@ -16,11 +16,10 @@ $payments = $payment_controller->getPayments();
 
 if (isset($_POST['submit'])) {
     $booking = $_POST['booking'];
-    $user_name = $_POST['user_name'];
+    $user_name = $_SESSION['user_name'];
     $payment_type = $_POST['payment'];
     $account_no = $_POST['account_no'];
     $total_price = $_POST['total_price'];
-    // $user_id = $_POST['userID']; 
     $user_id = $_SESSION['user_id'];
     $pay_status = $booking_payment_controller->createBookingPayment($booking, $user_name, $payment_type, $account_no, $total_price, $user_id);
 
@@ -28,7 +27,7 @@ if (isset($_POST['submit'])) {
         $id = $_GET['id'];
         $pay_controller = new BookingController();
         $paid = $pay_controller->makePayment($id);
-        echo '<script>location.href="checkBooking.php?pay_status=' . $pay_status . '"</script>';
+        echo '<script>location.href="payment.php?pay_status=' . $pay_status . '"</script>';
     }
 }
 
@@ -48,11 +47,6 @@ if (isset($_POST['submit'])) {
         <div class="container-fluid">
             <h2><strong>Make Payment</strong></h2>
             <form action="" method="post" enctype="multipart/form-data">
-                <div class="my-3">
-                    <label for="" class="form-label">User</label>
-                    <input type="text" name="user_name" value="<?php if (isset($_SESSION['user_name'])) echo $_SESSION['user_name']; ?>" class="form-control">
-                </div>
-
                 <div class="my-3">
                     <label for="" class="form-label">Booking ID</label>
                     <select name="booking" id="" class="form-select">
@@ -99,11 +93,6 @@ if (isset($_POST['submit'])) {
                     <label for="" class="form-label">Total Price</label>
                     <input type="text" name="total_price" value="<?php if (isset($_POST['total_price'])) echo $_POST['total_price']; ?>" class="form-control">
                 </div>
-
-                <!-- <div class="my-3"> 
-                    <label for="" class="form-label">User ID</label>
-                    <input type="text" name="userID" value="<?php if(isset($_SESSION['user_id'])) echo $_SESSION['user_id']; ?>" class="form-control">
-                </div> -->
 
                 <div class="mt-3">
                     <button class="btn btn-danger" type="submit" name="submit">Pay</button>

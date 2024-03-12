@@ -24,39 +24,6 @@ if(isset($_POST['submit'])){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 10% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 600px;
-            position: relative;
-        }
-
-        .close1, .close2, .close3 {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            color: #aaa;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    </style>
 </head>
 
 <body>
@@ -74,12 +41,11 @@ if(isset($_POST['submit'])){
     ?>
 
     <div class="col-md-6 mt-3">
-        <!-- <a class='btn btn-success p-2' href='addShowTime.php'>Add New Showtime</a> -->
         <a id="addShowtimeBtn" class='btn btn-success p-2' href='addShowTime.php'>Add New Showtime</a>
-        <div id="myModal1" class="modal">
+        <div id="myModal" class="modal">
             <div class="modal-content">
-                <span class="close1">&times;</span>
-                <div id="modalContent1"></div>
+                <span class="close">&times;</span>
+                <div id="modalContent"></div>
             </div>
         </div>
         <a class='btn btn-primary p-2 mx-2' href="movieShowtime.php">Join with movie</a>
@@ -114,8 +80,8 @@ if(isset($_POST['submit'])){
 
     <script>
         var addShowtimeBtn = document.getElementById('addShowtimeBtn');
-        var modal = document.getElementById('myModal1');
-        var modalContent = document.getElementById('modalContent1');
+        var modal = document.getElementById('myModal');
+        var modalContent = document.getElementById('modalContent');
 
         addShowtimeBtn.addEventListener('click', function(event) {
             event.preventDefault();
@@ -139,7 +105,7 @@ if(isset($_POST['submit'])){
             xhr.send();
         }
 
-        var closeBtn = document.getElementsByClassName("close1")[0];
+        var closeBtn = document.getElementsByClassName("close")[0];
         closeBtn.onclick = function() {
             modal.style.display = "none";
         }

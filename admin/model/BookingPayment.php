@@ -18,17 +18,18 @@ class BookingPayment {
         return $result;
     }
 
-    public function addBookingPayment($booking,$customer_name,$payment_type,$account_no,$total_price){
+    public function addBookingPayment($booking,$user_name,$payment_type,$account_no,$total_price,$user_id){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-        $sql = "INSERT INTO payment(booking_id,customer_name,payment_type_id,account_no,total_price) 
-                VALUES(:booking_id,:customer_name,:payment_type,:account_no,:total_price)";
+        $sql = "INSERT INTO payment(booking_id,customer_name,payment_type_id,account_no,total_price,user_id) 
+                VALUES(:booking_id,:customer_name,:payment_type,:account_no,:total_price,:user_id)";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':booking_id',$booking);
-        $statement->bindParam(':customer_name',$customer_name);
+        $statement->bindParam(':customer_name',$user_name);
         $statement->bindParam(':payment_type',$payment_type);
         $statement->bindParam(':account_no',$account_no);
         $statement->bindParam(':total_price',$total_price);
+        $statement->bindParam(':user_id',$user_id);
         if($statement->execute())
         {
             return true;

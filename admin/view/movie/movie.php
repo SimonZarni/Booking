@@ -44,39 +44,6 @@ if (isset($_POST['submit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 10% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 600px;
-            position: relative;
-        }
-
-        .close {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            color: #aaa;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    </style>
 </head>
 
 <body>
@@ -94,7 +61,6 @@ if (isset($_POST['submit'])) {
     ?>
 
     <div class="col-md-4 mt-3">
-        <!-- <a class='btn btn-success p-2' href='addMovie.php'>Add New Movie</a> -->
         <a id="addMovieBtn" class='btn btn-success p-2' href='addMovie.php'>Add New Movie</a>
         <div id="myModal" class="modal">
             <div class="modal-content">

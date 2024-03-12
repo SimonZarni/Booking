@@ -21,6 +21,11 @@ if (isset($_SESSION['user_id'])) {
 </head>
 
 <body>
+    <?php
+    if (isset($_GET['pay_status']) && $_GET['pay_status'] == true) {
+        echo "<span class='text-success'>Booking paid successfully.</span>";
+    }
+    ?>
     <h3 class="mt-1"><strong>Payment history</strong></h3>
     <div class="col-md-4 mt-3">
         <a class='btn btn-danger p-2' href='checkBooking.php'>Your bookings</a>

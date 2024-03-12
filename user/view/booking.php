@@ -26,8 +26,7 @@ if (isset($_POST['submit'])) {
         $seat_no = $_POST['seat_no'];
         $no_of_tickets = $_POST['no_of_tickets'];
         $total_price = $_POST['total_price'];
-        $user_name = $_POST['user_name'];
-        // $user_id = $_POST['userID'];
+        $user_name = $_SESSION['user_name'];
         $user_id = $_SESSION['user_id'];
         $status = $booking_controller->createBooking($movie, $date, $showtime, $theater, $seat_no, $no_of_tickets, $total_price, $user_name, $user_id);
 
@@ -54,11 +53,6 @@ if (isset($_POST['submit'])) {
             <a class="btn btn-danger mt-1" href="checkBooking.php">Your Booking</a>
             <h2><strong>Book Your Seats Now!</strong></h2>
             <form action="" method="post" enctype="multipart/form-data">
-                <div class="my-3">
-                    <label for="" class="form-label">User</label>
-                    <input type="text" name="user_name" value="<?php if (isset($_SESSION['user_name'])) echo $_SESSION['user_name']; ?>" class="form-control">
-                </div>
-
                 <div class="my-3">
                     <label for="" class="form-label">Movie</label>
                     <select name="movie" id="" class="form-select">
@@ -124,11 +118,6 @@ if (isset($_POST['submit'])) {
                     <label for="" class="form-label">Total Price</label>
                     <input type="text" name="total_price" value="<?php if (isset($_POST['total_price'])) echo $_POST['total_price']; ?>" class="form-control">
                 </div>
-
-                <!-- <div class="my-3">
-                    <label for="" class="form-label">User ID</label>
-                    <input type="text" name="userID" value="<?php if (isset($_SESSION['user_id'])) echo $_SESSION['user_id']; ?>" class="form-control">
-                </div> -->
 
                 <div class="mt-3">
                     <button class="btn btn-success" type="submit" name="submit">Book</button>
