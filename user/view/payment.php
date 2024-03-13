@@ -43,6 +43,7 @@ if (isset($_SESSION['user_id'])) {
                         <th>Payment Type</th>
                         <th>Account No</th>
                         <th>Total Price</th>
+                        <th>Payment Date</th>
                         <th>Action</th>
                     </thead>
                     <tbody>
@@ -56,6 +57,7 @@ if (isset($_SESSION['user_id'])) {
                             echo "<td>" . $booking_payment['payment_type'] . "</td>";
                             echo "<td>" . $booking_payment['account_no'] . "</td>";
                             echo "<td>" . $booking_payment['total_price'] . "</td>";
+                            echo "<td>" . $booking_payment['payment_date'] . "</td>";
                             echo "<td>";
                             echo "<a class='btn btn-primary mx-2' href='payment_details.php?id=" . $booking_payment['id'] . "'>View</a>";
                             echo "<a class='btn btn-danger mx-2' href='deletePayment.php?id=" . $booking_payment['id'] . "' onclick='return deletePayment()'>Delete</a>";

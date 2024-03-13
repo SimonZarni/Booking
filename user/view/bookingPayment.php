@@ -24,7 +24,8 @@ if (isset($_POST['submit'])) {
     $account_no = $_POST['account_no'];
     $total_price = $_POST['total_price'];
     $user_id = $_SESSION['user_id'];
-    $pay_status = $booking_payment_controller->createBookingPayment($booking, $user_name, $payment_type, $account_no, $total_price, $user_id);
+    $payment_date = date('Y-m-d');
+    $pay_status = $booking_payment_controller->createBookingPayment($booking, $user_name, $payment_type, $account_no, $total_price, $user_id, $payment_date);
 
     if ($pay_status) {
         $id = $_GET['id'];

@@ -29,7 +29,8 @@ if (isset($_POST['submit'])) {
     $total_price = $_POST['total_price'];
     $user_name = $_POST['user_name'];
     $user_id = $_POST['user_id'];
-    $status = $booking_payment_controller->createBookingPayment($booking, $user_name, $payment_type, $account_no, $total_price, $user_id);
+    $payment_date = date('Y-m-d');
+    $status = $booking_payment_controller->createBookingPayment($booking, $user_name, $payment_type, $account_no, $total_price, $user_id, $payment_date);
 
     if ($status) {
         echo '<script>location.href="payment.php?status=' . $status . '"</script>';
@@ -67,7 +68,7 @@ if (isset($_POST['submit'])) {
     }
     ?>
 
-    <div class="col-md-4 mt-3">
+    <!-- <div class="col-md-4 mt-3">
         <a id="addBookingPayBtn" class="btn btn-success p-2" href="addbookingPayment.php">Add New Payment</a>
         <div id="myModal" class="modal">
             <div class="modal-content">
@@ -75,7 +76,7 @@ if (isset($_POST['submit'])) {
                 <div id="modalContent"></div>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="row mt-3">
         <div class="col-md-12">
             <table class="table table-striped" id="payBookTable">
@@ -86,6 +87,7 @@ if (isset($_POST['submit'])) {
                     <th>Payment Type</th>
                     <th>Account No</th>
                     <th>Total Price</th>
+                    <th>Payment Date</th>
                     <th>Status</th>
                     <th>Action</th>
                 </thead>
@@ -99,6 +101,7 @@ if (isset($_POST['submit'])) {
                         echo "<td>" . $booking_payment['payment_type'] . "</td>";
                         echo "<td>" . $booking_payment['account_no'] . "</td>";
                         echo "<td>" . $booking_payment['total_price'] . "</td>";
+                        echo "<td>" . $booking_payment['payment_date'] . "</td>";
                         if ($booking_payment['status'] == 'Accepted') {
                             echo "<td class='text-success'>" . $booking_payment['status'] . "</td>";
                         } elseif ($booking_payment['status'] == 'Declined') {

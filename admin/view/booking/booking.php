@@ -62,16 +62,15 @@ if (isset($_POST['submit'])) {
         echo "<span class='text-success'>Booking has been updated successfully.</span>";
     }
     ?>
-    <div class="col-md-4 mt-3">
+    <!-- <div class="col-md-4 mt-3">
         <a class='btn btn-success p-2' href='addBooking.php'>Add New Booking</a>
-        <!-- <a id="addBookingBtn" class='btn btn-success p-2' href='addBooking.php'>Add New Booking</a> -->
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
                 <div id="modalContent"></div>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="row mt-3">
         <div class="col-md-12">
             <table class="table table-striped" id="bookTable">

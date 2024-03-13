@@ -28,7 +28,8 @@ if (isset($_POST['submit'])) {
     $total_price = $_POST['total_price'];
     $user_name = $_POST['user_name'];
     $user_id = $_POST['user_id'];
-    $status = $booking_payment_controller->createBookingPayment($booking, $user_name, $payment_type, $account_no, $total_price, $user_id);
+    $payment_date = date('Y-m-d');
+    $status = $booking_payment_controller->createBookingPayment($booking, $user_name, $payment_type, $account_no, $total_price, $user_id, $payment_date);
 
     if ($status) {
         echo '<script>location.href="payment.php?status=' . $status . '"</script>';
