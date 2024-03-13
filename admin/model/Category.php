@@ -64,7 +64,7 @@ class Category {
         $sql = "DELETE FROM category WHERE id=:id";
         $statement = $conn->prepare($sql);
         $statement->bindParam(':id',$id);
-        try{
+        try {
             $statement->execute();
             return true;
         }

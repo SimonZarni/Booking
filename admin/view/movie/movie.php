@@ -50,13 +50,13 @@ if (isset($_POST['submit'])) {
     <h2 class="mt-1"><strong>Movie</strong></h2>
     <?php
     if (isset($_GET['status']) && $_GET['status'] == true) {
-        echo "<span class='text-success'>New Movie has been added successfully.</span>";
+        echo "<div class='alert alert-success'>New Movie has been added successfully.</div>";
     }
     ?>
 
     <?php
     if (isset($_GET['updateStatus']) && $_GET['updateStatus'] == true) {
-        echo "<span class='text-success'>Movie has been updated successfully.</span>";
+        echo "<div class='alert alert-success'>Movie has been updated successfully.</div>";
     }
     ?>
 

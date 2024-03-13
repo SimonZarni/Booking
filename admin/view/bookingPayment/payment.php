@@ -52,19 +52,19 @@ if (isset($_POST['submit'])) {
     <h2 class="mt-1"><strong>Payment</strong></h2>
     <?php
     if (isset($_GET['status']) && $_GET['status'] == true) {
-        echo "<span class='text-success'>Booking has been paid successfully.</span>";
+        echo "<div class='alert alert-success'>Booking has been paid successfully.</div>";
     }
 
     if (isset($_GET['updateStatus']) && $_GET['updateStatus'] == true) {
-        echo "<span class='text-success'>Booking Payment has been updated successfully.</span>";
+        echo "<div class='alert alert-success'>Booking Payment has been updated successfully.</div>";
     }
 
     if (isset($_GET['acceptstatus']) && $_GET['acceptstatus'] == true) {
-        echo "<span class='text-success'>User payment has been accepted.</span>";
+        echo "<div class='alert alert-success'>User payment has been accepted.</div>";
     }
 
     if (isset($_GET['declinestatus']) && $_GET['declinestatus'] == true) {
-        echo "<span class='text-success'>User payment has been declined.</span>";
+        echo "<div class='alert alert-danger'>User payment has been declined.</div>";
     }
     ?>
 

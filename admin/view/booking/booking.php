@@ -53,13 +53,13 @@ if (isset($_POST['submit'])) {
     <h2 class="mt-1"><strong>Booking</strong></h2>
     <?php
     if (isset($_GET['status']) && $_GET['status'] == true) {
-        echo "<span class='text-success'>New Booking has been added successfully.</span>";
+        echo "<div class='alert alert-success'>New Booking has been added successfully.</div>";
     }
     ?>
 
     <?php
     if (isset($_GET['updateStatus']) && $_GET['updateStatus'] == true) {
-        echo "<span class='text-success'>Booking has been updated successfully.</span>";
+        echo "<div class='alert alert-success'>Booking has been updated successfully.</div>";
     }
     ?>
     <!-- <div class="col-md-4 mt-3">

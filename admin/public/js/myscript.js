@@ -38,6 +38,10 @@ function deleteMovieShowtime() {
   return confirm("Are you sure to delete this joined movie and showtime?");
 }
 
+function deleteReview() {
+  return confirm("Are you sure to delete this review?");
+}
+
 $(document).ready(function () {
   $("#catTable").DataTable({
     paging: true,
@@ -89,6 +93,13 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $("#userTable").DataTable({
+    paging: true,
+    searching: true,
+  });
+});
+
+$(document).ready(function () {
+  $("#reviewTable").DataTable({
     paging: true,
     searching: true,
   });

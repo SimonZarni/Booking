@@ -58,49 +58,55 @@ if (isset($_SESSION['id'])) {
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="../category/category.php">
-							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Category</span>
+							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Categories</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="../movie/movie.php">
-							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Movie</span>
+							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Movies</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="../theater/theater.php">
-							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Theater</span>
+							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Theaters</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="../showtime/showtime.php">
-							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Show Time</span>
+							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Showtimes</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="../payment/payment_method.php">
-							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Payment Type</span>
+							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Payment Types</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="../booking/booking.php">
-							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Booking</span>
+							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Bookings</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="../bookingPayment/payment.php">
-							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Payment</span>
+							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Payments</span>
+						</a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="../review/review.php">
+							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Reviews</span>
 						</a>
 					</li>
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="../user/user.php">
-							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">User</span>
+							<i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Users</span>
 						</a>
 					</li>
 

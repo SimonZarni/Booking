@@ -30,10 +30,10 @@ if (isset($_POST['submit'])) {
     <h2 class="mt-1"><strong>Payment Types</strong></h2>
     <?php
     if (isset($_GET['status']) && $_GET['status'] == true) {
-        echo "<span class='text-success'>New Payment has been added successfully.</span>";
+        echo "<div class='alert alert-success'>New Payment has been added successfully.</div>";
     }
     if (isset($_GET['updateStatus']) && $_GET['updateStatus'] == true) {
-        echo "<span class='text-success'>Payment has been updated successfully.</span>";
+        echo "<div class='alert alert-success'>Payment has been updated successfully.</div>";
     }
     if (isset($_GET['delete_success'])) {
         echo "<div class='alert alert-success'>Payment Method deleted successfully.</div>";

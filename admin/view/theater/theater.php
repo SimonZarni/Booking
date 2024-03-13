@@ -29,14 +29,11 @@ if(isset($_POST['submit'])){
     <?php
     if(isset($_GET['status']) && $_GET['status']==true)
     {
-        echo "<span class='text-success'>New Theater has been added successfully.</span>";
+        echo "<div class='alert alert-success'>New Theater has been added successfully.</div>";
     }
-    ?>
-
-    <?php
     if(isset($_GET['updateStatus']) && $_GET['updateStatus']==true)
     {
-        echo "<span class='text-success'>Theater has been updated successfully.</span>";
+        echo "<div class='alert alert-success'>Theater has been updated successfully.</div>";
     }
     ?>
 
