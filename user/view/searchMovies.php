@@ -21,7 +21,7 @@ if (isset($_GET['keyword'])) {
                         <div class="col-md-3">
                             <div class="upcome_2i1 clearfix position-relative">
                                 <div class="movie_img clearfix">
-                                    <img src="../../admin/public/img/<?php echo $movie['image']; ?>" style="height:350px; width:260px">
+                                    <img src="../../admin/uploads/<?php echo $movie['image']; ?>" style="height:350px; width:260px">
                                 </div>
                                 <div class="upcome_2i1i1 clearfix position-absolute top-0 text-center mx-5">
                                     <h6 class="text-uppercase"><a class="button_1" href="#">View Trailer</a></h6>
@@ -35,13 +35,6 @@ if (isset($_GET['keyword'])) {
                                             <h5><a href="#"><?php echo $movie['name']; ?></a></h5>
                                             <h6 class="text-muted"><?php echo $movie['category_name']; ?></h6>
                                             <h6 class="text-muted"><?php echo $movie['duration']; ?></h6>
-                                            <span class="col_red">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </span>
                                         </div>
                                     </div>
                                     <div class="col-md-1">
