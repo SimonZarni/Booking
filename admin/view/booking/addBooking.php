@@ -55,8 +55,19 @@ if (isset($_POST['submit'])) {
             <h2><strong>Add New Booking</strong></h2>
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="my-3">
-                   <label for="" class="form-label">User Name</label>
-                   <input type="text" name="user_name" value="<?php if (isset($_POST['user_name'])) echo $_POST['user_name']; ?>" class="form-control">
+                    <label for="" class="form-label">User Name</label>
+                    <select name="user_name" id="" class="form-select">
+                        <option value="" selected disabled>Select User Name</option>
+                        <?php
+                        foreach ($users as $user) {
+                        ?>
+                            <option value="<?php echo $user['name']; ?>" <?php if ((isset($_POST['user']) && $_POST['user']) == $user['id']) echo 'selected'; ?>>
+                                <?php echo $user['name']; ?>
+                            </option>
+                        <?php
+                        }
+                        ?>
+                    </select>
                 </div>
 
                 <div class="my-3">
