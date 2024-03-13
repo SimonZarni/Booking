@@ -28,7 +28,7 @@ if (isset($_SESSION['user_id'])) {
     ?>
     <h3 class="mt-1"><strong>Payment history</strong></h3>
     <div class="col-md-4 mt-3">
-        <a class='btn btn-danger p-2' href='checkBooking.php'>Your bookings</a>
+        <a class='btn btn-danger p-2' href='checkBooking.php'>Check your bookings</a>
     </div>
 
     <?php if (!empty($booking_payments)) {
@@ -56,7 +56,10 @@ if (isset($_SESSION['user_id'])) {
                             echo "<td>" . $booking_payment['payment_type'] . "</td>";
                             echo "<td>" . $booking_payment['account_no'] . "</td>";
                             echo "<td>" . $booking_payment['total_price'] . "</td>";
-                            echo "<td><a class='btn btn-danger mx-2' href='deletePayment.php?id=" . $booking_payment['id'] . "' onclick='return deletePayment()'>Delete</a></td>";
+                            echo "<td>";
+                            echo "<a class='btn btn-primary mx-2' href='payment_details.php?id=" . $booking_payment['id'] . "'>View</a>";
+                            echo "<a class='btn btn-danger mx-2' href='deletePayment.php?id=" . $booking_payment['id'] . "' onclick='return deletePayment()'>Delete</a>";
+                            echo "</td>";
                             echo "</tr>";
                         }
                         ?>

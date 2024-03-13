@@ -20,6 +20,22 @@ class BookingPayment {
         return $result;
     }
 
+    public function getBookingPayment($id){
+        $conn = Database::connect();
+        $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+        $sql = "SELECT payment.*, booking.id as booking_id, payment_method.payment_type as payment_type
+                FROM payment 
+                JOIN booking ON payment.booking_id = booking.id
+                JOIN payment_method ON payment.payment_type_id = payment_method.id
+                WHERE payment.id = :id";
+        $statement = $conn->prepare($sql);
+        $statement->bindParam(':id', $id);
+        if($statement->execute()){
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+        }
+        return $result;
+    }
+
     public function addBookingPayment($booking,$user_name,$payment_type,$account_no,$total_price,$user_id){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);

@@ -20,6 +20,21 @@ class Booking {
         return $result;
     }
 
+    public function getBooking($id){
+        $conn = Database::connect();
+        $sql = "SELECT booking.*, movie.name as movie_name, show_time.show_time as show_time, theater.name as theater FROM booking 
+                JOIN movie ON booking.movie_id = movie.id 
+                JOIN show_time ON booking.show_time_id = show_time.id
+                JOIN theater ON booking.theater_id = theater.id
+                WHERE booking.id = :id";
+        $statement = $conn->prepare($sql);
+        $statement->bindParam(':id', $id);
+        if($statement->execute()){
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+        }
+        return $result;
+    }
+
     public function addBooking($movie,$date,$show_time,$theater,$seat_no,$no_of_tickets,$total_price,$user_name,$user_id){
         $conn = Database::connect();
         $conn->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);

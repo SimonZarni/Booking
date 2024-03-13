@@ -30,7 +30,7 @@ if (isset($_SESSION['user_id'])) {
     <h3 class="mt-1"><strong>Booking history</strong></h3>
 
     <div class="col-md-4 mt-3">
-        <a class='btn btn-danger p-2' href='payment.php'>Your payments</a>
+        <a class='btn btn-danger p-2' href='payment.php'>Check your payments</a>
     </div>
 
     <?php if (!empty($bookings)) {
@@ -72,9 +72,11 @@ if (isset($_SESSION['user_id'])) {
                             }
                             echo "<td>";
                             if ($booking['payment_status'] == null) {
+                                echo "<a class='btn btn-primary mx-2' href='booking_details.php?id=" . $booking['id'] . "'>View</a>";
                                 echo "<a class='btn btn-danger mx-2' href='deleteBooking.php?id=" . $booking['id'] . "' onclick='return deleteBooking()'>Delete</a>";
                                 echo "<a class='btn btn-danger mx-2' href='bookingPayment.php?id=" . $booking['id'] . "'>Make Payment</a>";
                             } elseif ($booking['payment_status'] == 'Paid') {
+                                echo "<a class='btn btn-primary mx-2' href='booking_details.php?id=" . $booking['id'] . "'>View</a>";
                                 echo "<a class='btn btn-danger mx-2' href='deleteBooking.php?id=" . $booking['id'] . "' onclick='return deleteBooking()'>Delete</a>";
                             }
                             echo "</td>";
