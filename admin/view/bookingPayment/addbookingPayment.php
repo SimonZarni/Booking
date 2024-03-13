@@ -52,8 +52,19 @@ if (isset($_POST['submit'])) {
             <h2><strong>Add New Booking Payment</strong></h2>
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="my-3">
-                   <label for="" class="form-label">User Name</label>
-                   <input type="text" name="user_name" value="<?php if (isset($_POST['user_name'])) echo $_POST['user_name']; ?>" class="form-control" required>
+                    <label for="" class="form-label">User Name</label>
+                    <select name="user_name" id="" class="form-select">
+                        <option value="" selected disabled>Select User Name</option>
+                        <?php
+                        foreach ($bookings as $booking) {
+                        ?>
+                            <option value="<?php echo $booking['customer_name']; ?>">
+                                <?php echo $booking['customer_name']; ?>
+                            </option>
+                        <?php
+                        }
+                        ?>
+                    </select>
                 </div>
 
                 <div class="my-3">
@@ -111,7 +122,18 @@ if (isset($_POST['submit'])) {
 
                 <div class="my-3">
                     <label for="" class="form-label">Total Price</label>
-                    <input type="text" name="total_price" value="<?php if (isset($_POST['total_price'])) echo $_POST['total_price']; ?>" class="form-control" required>
+                    <select name="total_price" id="" class="form-select">
+                        <option value="" selected disabled>Select Total Price</option>
+                        <?php
+                        foreach ($bookings as $booking) {
+                        ?>
+                            <option value="<?php echo $booking['total_price']; ?>">
+                                <?php echo $booking['total_price']; ?>
+                            </option>
+                        <?php
+                        }
+                        ?>
+                    </select>
                 </div>
 
                 <div class="mt-3">
@@ -128,5 +150,5 @@ if (isset($_POST['submit'])) {
 </html>
 
 <!-- <?php
-include_once __DIR__ . '/../../layouts/admin_footer.php';
-?> -->
+        include_once __DIR__ . '/../../layouts/admin_footer.php';
+        ?> -->

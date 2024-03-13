@@ -11,6 +11,9 @@ $user_id = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 $booking_controller = new BookingController();
 $bookings = $booking_controller->getBookings($user_id);
 
+$id = $_GET['id'];
+$booking = $booking_controller->getBookingById($id);
+
 $payment_controller = new PaymentController();
 $payments = $payment_controller->getPayments();
 
@@ -91,7 +94,9 @@ if (isset($_POST['submit'])) {
 
                 <div class="my-3">
                     <label for="" class="form-label">Total Price</label>
-                    <input type="text" name="total_price" value="<?php if (isset($_POST['total_price'])) echo $_POST['total_price']; ?>" class="form-control">
+                    <select name="total_price" class="form-select">
+                        <option value="<?php echo $booking['total_price']; ?>" selected><?php echo $booking['total_price']; ?></option>
+                    </select>
                 </div>
 
                 <div class="mt-3">

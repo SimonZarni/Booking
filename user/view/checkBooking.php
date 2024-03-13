@@ -46,7 +46,6 @@ if (isset($_SESSION['user_id'])) {
                         <th>Show Time</th>
                         <th>Theater</th>
                         <th>Seat No</th>
-                        <th>No of Tickets</th>
                         <th>Total Price</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -63,7 +62,6 @@ if (isset($_SESSION['user_id'])) {
                             echo "<td>" . $booking['show_time'] . "</td>";
                             echo "<td>" . $booking['theater'] . "</td>";
                             echo "<td>" . $booking['seat_no'] . "</td>";
-                            echo "<td>" . $booking['no_of_tickets'] . "</td>";
                             echo "<td>" . $booking['total_price'] . "</td>";
                             if ($booking['payment_status'] == 'Paid') {
                                 echo "<td class='text-success'>" . $booking['payment_status'] . "</td>";

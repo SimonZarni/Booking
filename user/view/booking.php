@@ -24,11 +24,10 @@ if (isset($_POST['submit'])) {
         $showtime = $_POST['show_time'];
         $theater = $_POST['theater'];
         $seat_no = $_POST['seats'];
-        $no_of_tickets = $_POST['no_of_tickets'];
         $total_price = $_POST['total_price'];
         $user_name = $_SESSION['user_name'];
         $user_id = $_SESSION['user_id'];
-        $status = $booking_controller->createBooking($movie, $date, $showtime, $theater, $seat_no, $no_of_tickets, $total_price, $user_name, $user_id);
+        $status = $booking_controller->createBooking($movie, $date, $showtime, $theater, $seat_no, $total_price, $user_name, $user_id);
 
         if ($status) {
             echo '<script>location.href="checkBooking.php?status=' . $status . '"</script>';
@@ -65,13 +64,12 @@ if (isset($_POST['submit'])) {
             background-color: #ff6666;
         }
     </style>
-
 </head>
 
 <body>
     <div class="content">
         <div class="container-fluid">
-            <a class="btn btn-danger mt-1" href="checkBooking.php">Your Booking</a>
+            <a class="btn btn-danger mt-1" href="checkBooking.php">Check your Booking</a>
             <h2><strong>Book Your Seats Now!</strong></h2>
             <form action="" method="post" enctype="multipart/form-data">
                 <div class="my-3">
@@ -130,11 +128,6 @@ if (isset($_POST['submit'])) {
                     <table id="seatSelection" class="table table-bordered">
                     </table>
                     <input type="hidden" name="seats" id="selectedSeats" value="">
-                </div>
-
-                <div class="my-3">
-                    <label for="" class="form-label">No of Tickets</label>
-                    <input type="text" name="no_of_tickets" value="<?php if (isset($_POST['no_of_tickets'])) echo $_POST['no_of_tickets']; ?>" class="form-control">
                 </div>
 
                 <div class="my-3">
@@ -206,7 +199,6 @@ if (isset($_POST['submit'])) {
 
         generateSeatingChart();
     </script>
-
 
 </body>
 

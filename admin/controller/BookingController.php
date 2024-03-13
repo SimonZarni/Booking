@@ -8,8 +8,8 @@ class BookingController extends Booking {
         return $this->getBookingInfo();
     }
 
-    public function createBooking($movie,$date,$show_time,$theater,$seat_no,$no_of_tickets,$total_price,$user_name,$user_id){
-        return $this->addBooking($movie,$date,$show_time,$theater,$seat_no,$no_of_tickets,$total_price,$user_name,$user_id);
+    public function createBooking($movie,$date,$show_time,$theater,$seat_no,$total_price,$user_name,$user_id){
+        return $this->addBooking($movie,$date,$show_time,$theater,$seat_no,$total_price,$user_name,$user_id);
     }
 
     public function getBookingById($id){

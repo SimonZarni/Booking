@@ -80,7 +80,7 @@ if (isset($_POST['submit'])) {
         <div class="col-md-12">
             <table class="table table-striped" id="payBookTable">
                 <thead>
-                    <th>No</th>
+                    <th>ID</th>
                     <th>Booking ID</th>
                     <th>Customer Name</th>
                     <th>Payment Type</th>
@@ -91,10 +91,9 @@ if (isset($_POST['submit'])) {
                 </thead>
                 <tbody>
                     <?php
-                    $count = 1;
                     foreach ($booking_payments as $booking_payment) {
                         echo "<tr>";
-                        echo "<td>" . $count++ . "</td>";
+                        echo "<td>" . $booking_payment['id'] . "</td>";
                         echo "<td>" . $booking_payment['booking_id'] . "</td>";
                         echo "<td>" . $booking_payment['customer_name'] . "</td>";
                         echo "<td>" . $booking_payment['payment_type'] . "</td>";

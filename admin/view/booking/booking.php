@@ -28,11 +28,10 @@ if (isset($_POST['submit'])) {
     $showtime = $_POST['show_time'];
     $theater = $_POST['theater'];
     $seat_no = $_POST['seat_no'];
-    $no_of_tickets = $_POST['no_of_tickets'];
     $total_price = $_POST['total_price'];
     $user_name = $_POST['user_name'];
     $user_id = $_POST['user_id'];
-    $status = $booking_controller->createBooking($movie, $date, $showtime, $theater, $seat_no, $no_of_tickets, $total_price, $user_name, $user_id);
+    $status = $booking_controller->createBooking($movie, $date, $showtime, $theater, $seat_no, $total_price, $user_name, $user_id);
 
     if ($status) {
         echo '<script>location.href="booking.php?status=' . $status . '"</script>';
@@ -64,7 +63,8 @@ if (isset($_POST['submit'])) {
     }
     ?>
     <div class="col-md-4 mt-3">
-        <a id="addBookingBtn" class='btn btn-success p-2' href='addBooking.php'>Add New Booking</a>
+        <a class='btn btn-success p-2' href='addBooking.php'>Add New Booking</a>
+        <!-- <a id="addBookingBtn" class='btn btn-success p-2' href='addBooking.php'>Add New Booking</a> -->
         <div id="myModal" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
@@ -76,31 +76,28 @@ if (isset($_POST['submit'])) {
         <div class="col-md-12">
             <table class="table table-striped" id="bookTable">
                 <thead>
-                    <th>No</th>
+                    <th>ID</th>
                     <th>User</th>
                     <th>Movie</th>
                     <th>Date</th>
                     <th>Show Time</th>
                     <th>Theater</th>
                     <th>Seat No</th>
-                    <th>No of Tickets</th>
                     <th>Total Price</th>
                     <th>Status</th>
                     <th>Action</th>
                 </thead>
                 <tbody>
                     <?php
-                    $count = 1;
                     foreach ($bookings as $booking) {
                         echo "<tr>";
-                        echo "<td>" . $count++ . "</td>";
+                        echo "<td>" . $booking['id'] . "</td>";
                         echo "<td>" . $booking['customer_name'] . "</td>";
                         echo "<td>" . $booking['movie_name'] . "</td>";
                         echo "<td>" . $booking['date'] . "</td>";
                         echo "<td>" . $booking['show_time'] . "</td>";
                         echo "<td>" . $booking['theater'] . "</td>";
                         echo "<td>" . $booking['seat_no'] . "</td>";
-                        echo "<td>" . $booking['no_of_tickets'] . "</td>";
                         echo "<td>" . $booking['total_price'] . "</td>";
                         if ($booking['payment_status'] == 'Paid') {
                             echo "<td class='text-success'>" . $booking['payment_status'] . "</td>";
@@ -156,8 +153,6 @@ if (isset($_POST['submit'])) {
             }
         }
     </script>
-
-
 </body>
 
 </html>
