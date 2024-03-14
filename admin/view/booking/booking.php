@@ -104,7 +104,9 @@ if (isset($_POST['submit'])) {
                             echo "<td class='text-danger'>Unpaid</td>";
                         }
                         echo "<td>";
-                        echo "<a class='btn btn-danger mx-2' href='deleteBooking.php?id=" . $booking['id'] . "' onclick='return deleteBooking()'>Delete</a>";
+                        if ($booking['payment_status'] == null) {
+                            echo "<a class='btn btn-danger mx-2' href='deleteBooking.php?id=" . $booking['id'] . "' onclick='return deleteBooking()'>Delete</a>";
+                        }
                         echo "</td>";
                         echo "</tr>";
                     }
