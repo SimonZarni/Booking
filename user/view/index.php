@@ -19,12 +19,6 @@ $movies = $movie_controller->getMovies();
 </head>
 
 <body>
-    <?php
-    if (isset($_GET['status']) && $_GET['status'] == true) {
-        echo "<span class='text-success'>Movie booked successfully.</span>";
-    }
-    ?>
-
     <div class="container-fluid">
         <div class="row upcome_2 mt-4">
             <div class="tab-content">
