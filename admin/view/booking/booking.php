@@ -2,25 +2,9 @@
 
 include_once __DIR__ . '/../../layouts/admin_navbar.php';
 include_once __DIR__ . '/../../controller/BookingController.php';
-include_once  __DIR__ . '/../../controller/MovieController.php';
-include_once  __DIR__ . '/../../controller/ShowTimeController.php';
-include_once  __DIR__ . '/../../controller/TheaterController.php';
-include_once  __DIR__ . '/../../controller/UserController.php';
 
 $booking_controller = new BookingController();
 $bookings = $booking_controller->getBookings();
-
-$movie_controller = new MovieController();
-$movies = $movie_controller->getMovies();
-
-$showtime_controller = new ShowTimeController();
-$showtimes = $showtime_controller->getShowTimes();
-
-$theater_controller = new TheaterController();
-$theaters = $theater_controller->getTheaters();
-
-$user_controller = new UserController();
-$users = $user_controller->getUsers();
 
 if (isset($_POST['submit'])) {
     $movie = $_POST['movie'];
@@ -104,6 +88,7 @@ if (isset($_POST['submit'])) {
                             echo "<td class='text-danger'>Unpaid</td>";
                         }
                         echo "<td>";
+                        echo "<a class='btn btn-primary mx-2' href='booking_details.php?id=" . $booking['id'] . "' '>View</a>";
                         if ($booking['payment_status'] == null) {
                             echo "<a class='btn btn-danger mx-2' href='deleteBooking.php?id=" . $booking['id'] . "' onclick='return deleteBooking()'>Delete</a>";
                         }

@@ -2,13 +2,9 @@
 
 include_once __DIR__ . '/../../layouts/admin_navbar.php';
 include_once __DIR__ . '/../../controller/MovieController.php';
-include_once  __DIR__. '/../../controller/CategoryController.php';
 
 $movie_controller = new MovieController();
 $movies = $movie_controller->getMovies();
-
-$category_controller = new CategoryController();
-$categories = $category_controller->getCategories();
 
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];

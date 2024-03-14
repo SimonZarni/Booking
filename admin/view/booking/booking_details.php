@@ -1,11 +1,18 @@
 <?php
 
-include_once __DIR__ . '/../layouts/navbar.php';
-include_once __DIR__ . '/../controller/BookingController.php';
+include_once __DIR__ . '/../../layouts/admin_navbar.php';
+include_once __DIR__ . '/../../controller/BookingController.php';
 
 $id = $_GET['id'];
+
 $booking_controller = new BookingController();
-$booking = $booking_controller->getBookingById($id);
+$bookings = $booking_controller->getBookings();
+
+foreach ($bookings as $booking) {
+    if ($id == $booking['id']) {
+        break;
+    }
+}
 
 ?>
 
@@ -22,15 +29,14 @@ $booking = $booking_controller->getBookingById($id);
     <div class="container">
         <div class="col-md-12">
             <p><strong>Booking ID:</strong> <?php echo $booking['id']; ?></p>
-            <p><strong>Movie:</strong> <?php echo $booking['movie_name'] ?></p>
-            <p><strong>Date:</strong> <?php echo $booking['date']; ?></p>
+            <p><strong>Customer Name:</strong> <?php echo $booking['customer_name'] ?></p>
+            <p><strong>Movie:</strong> <?php echo $booking['movie_name']; ?></p>
+            <p><strong>Show Date:</strong> <?php echo $booking['date']; ?></p>
             <p><strong>Showtime:</strong> <?php echo $booking['show_time']; ?></p>
             <p><strong>Theater:</strong> <?php echo $booking['theater']; ?></p>
             <p><strong>Seat No:</strong> <?php echo $booking['seat_no']; ?></p>
             <p><strong>Total Price:</strong> <?php echo $booking['total_price']; ?></p>
-            <p><strong>Customer Name:</strong> <?php echo $booking['customer_name']; ?></p>
-            <p><strong>Payment Status:</strong> <?php if($booking['payment_status'] == null) echo "Unpaid" ?></p>
-            <p><strong>User ID:</strong> <?php echo $booking['user_id']; ?></p>
+            <p><strong>Status:</strong> <?php if($booking['payment_status'] == 'Paid') echo "Paid"; else echo "Unpaid";?></p>
         </div>
     </div>
 </body>
@@ -38,5 +44,5 @@ $booking = $booking_controller->getBookingById($id);
 </html>
 
 <?php
-include_once  __DIR__ . '/../layouts/footer.php';
+include_once  __DIR__ . '/../../layouts/admin_footer.php';
 ?>

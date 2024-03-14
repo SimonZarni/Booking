@@ -2,25 +2,9 @@
 
 include_once __DIR__ . '/../../layouts/admin_navbar.php';
 include_once __DIR__ . '/../../controller/BookingPaymentController.php';
-include_once  __DIR__ . '/../../controller/BookingController.php';
-include_once  __DIR__ . '/../../controller/ShowTimeController.php';
-include_once  __DIR__ . '/../../controller/PaymentController.php';
-include_once  __DIR__ . '/../../controller/UserController.php';
 
 $booking_payment_controller = new BookingPaymentController();
 $booking_payments = $booking_payment_controller->getBookingPayments();
-
-$booking_controller = new BookingController();
-$bookings = $booking_controller->getBookings();
-
-$showtime_controller = new ShowTimeController();
-$showtimes = $showtime_controller->getShowTimes();
-
-$payment_controller = new PaymentController();
-$payments = $payment_controller->getPayments();
-
-$user_controller = new UserController();
-$users = $user_controller->getUsers();
 
 if (isset($_POST['submit'])) {
     $booking = $_POST['booking'];
@@ -110,10 +94,11 @@ if (isset($_POST['submit'])) {
                             echo "<td>Pending</td>";
                         }
                         echo "<td>";
+                        echo "<a class='btn btn-primary' href='payment_details.php?id=" . $booking_payment['id'] . "' '>View</a>";
                         if ($booking_payment['status'] == null) {
-                            echo "<a class='btn btn-danger mx-2' href='deletebookingPayment.php?id=" . $booking_payment['id'] . "' onclick='return deletebookingPayment()'>Delete</a>";
+                            echo "<a class='btn btn-danger mx-1' href='deletebookingPayment.php?id=" . $booking_payment['id'] . "' onclick='return deletebookingPayment()'>Delete</a>";
                             echo "<a class='btn btn-success' href='acceptPayment.php?id=" . $booking_payment['id'] . "'>Accept</a>";
-                            echo "<a class='btn btn-danger mx-2' href='declinePayment.php?id=" . $booking_payment['id'] . "'>Decline</a>";
+                            echo "<a class='btn btn-danger mx-1' href='declinePayment.php?id=" . $booking_payment['id'] . "'>Decline</a>";
                         }
                         echo "</td>";
                         echo "</tr>";
