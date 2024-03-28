@@ -74,7 +74,7 @@ if (isset($_SESSION['user_id'])) {
             <li class="nav-item">
               <form action="displayMovies.php" method="post">
                 <select name="category" class="form-select bg-light col-md-6">
-                  <option value="">All Categories</option>
+                  <option value="" selected disabled>Select Genre</option>
                   <?php
                   foreach ($categories as $category) {
                     $selected = "";

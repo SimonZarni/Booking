@@ -22,7 +22,7 @@ if (isset($_POST['category'])) {
                         <div class="col-md-3">
                             <div class="upcome_2i1 clearfix position-relative">
                                 <div class="movie_img clearfix">
-                                    <img src="../../admin/public/img/<?php echo $movie['image']; ?>" style="height:350px; width:260px">
+                                    <img src="../../admin/uploads/<?php echo $movie['image']; ?>" style="height:350px; width:260px">
                                 </div>
                                 <div class="upcome_2i1i1 clearfix position-absolute top-0 text-center mx-5">
                                     <h6 class="text-uppercase"><a class="button_1" href="#">View Trailer</a></h6>

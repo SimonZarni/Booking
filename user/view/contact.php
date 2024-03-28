@@ -10,6 +10,9 @@ if (isset($_POST['submit'])) {
 	$subject = $_POST['subject'];
 	$message = $_POST['message'];
 	$status = $contact_controller->submitForm($name, $email, $subject, $message);
+	if($status){
+		echo "<div class=alert alert-success>Thank You For Contacting Us!</div>";
+	}
 }
 
 ?>
@@ -25,11 +28,6 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-	<?php
-	if (isset($_GET['status'])) {
-		echo "<span class='text-success'>Thank You For Contacting Us!</span>";
-	}
-	?>
 	<section id="center" class="center_o pt-5">
 		<div class="container">
 			<div class="row center_o1 text-center">

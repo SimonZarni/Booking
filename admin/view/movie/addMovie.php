@@ -11,7 +11,10 @@ $categories = $category_controller->getCategories();
 
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
-    $image = isset($_FILES['image']['name']) ? $_FILES['image']['name'] : '';
+    if(isset($_FILES['image']['name'])){
+        $image = $_FILES['image']['name'];
+    }
+    // $image = isset($_FILES['image']['name']) ? $_FILES['image']['name'] : '';
     $category = $_POST['category'];
     $duration = $_POST['duration'];
     $release_date = $_POST['release_date'];
