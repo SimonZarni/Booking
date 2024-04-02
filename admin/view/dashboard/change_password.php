@@ -16,7 +16,7 @@ if (isset($_POST['submit'])) {
             $status = $auth_controller->changePassword(password_hash($new_password, PASSWORD_DEFAULT), $id);
 
             if ($status) {
-                header('location: ../dashboard/index.php');
+                header('location: index.php');
                 exit();
             } else {
                 $error = "Failed to update password.";
